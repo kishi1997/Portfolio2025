@@ -10,11 +10,11 @@ const Navbar = () => {
         {/* logo  */}
         <a href="#top">
           <Image
-            width={48}
-            height={16}
+            width={96}
+            height={96}
             alt="logo"
             src={assets.logo}
-            className="w-28 cursor-pointer mr-14"
+            className="w-40 cursor-pointer mr-14"
           />
         </a>
         {/* PC-menu  */}
