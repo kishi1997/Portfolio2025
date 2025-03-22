@@ -18,6 +18,7 @@
   --font-Ovo: var(--font-ovo);
   --shadow-black: var(--blackShadow);
   --shadow-white: var(--whiteShadow);
+  /* --grid-auto-fit-200px: repeat(auto-fit, minmax(200px, 1fr)); */
 }
 
 body {
