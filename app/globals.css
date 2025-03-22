@@ -8,6 +8,7 @@
   --darkTheme: #11001f;
   --blackShadow: 4px 4px #000;
   --whiteShadow: 4px 4px #fff;
+  --autofit-cols-200: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 @theme inline {
