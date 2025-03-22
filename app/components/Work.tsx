@@ -11,7 +11,7 @@ const Work = () => {
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         Welcome to my portfolio! I am a front-end web developer.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-10">
+      <div className="grid grid-cols-(--autofit-cols-200) gap-5 my-10">
         {workData.map((work, index) => (
           <div
             key={index}
@@ -46,7 +46,7 @@ const Work = () => {
       <Link
         href=""
         className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px]
-       border-gray-700 p-6 rounded-full py-3 px-10 mx-auto duration-500 hover:bg-lightHover"
+       border-gray-700 p-6 rounded-full py-3 px-10 mx-auto duration-500 hover:bg-lightHover hover:-translate-y-1 "
       >
         show more
         <Image

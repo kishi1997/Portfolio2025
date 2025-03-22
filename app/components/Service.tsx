@@ -11,7 +11,7 @@ const Service = () => {
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         I am a front-end web developer.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-10">
+      <div className="grid grid-cols-(--autofit-cols-200) gap-6 my-10">
         {serviceData.map((service, index) => (
           <div
             key={index}
@@ -45,7 +45,6 @@ const Service = () => {
             </Link>
           </div>
         ))}
-        ;
       </div>
     </div>
   );
