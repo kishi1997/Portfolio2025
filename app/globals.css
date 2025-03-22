@@ -3,13 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --lightHover: #fcf4ff;
+  --darkHover: #2a004a;
+  --darkTheme: #11001f;
+  --blackShadow: 4px 4px #000;
+  --whiteShadow: 4px 4px #fff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-lightHover: var(--lightHover);
   --font-Outfit: var(--font-outfit);
   --font-Ovo: var(--font-ovo);
+  --shadow-black: var(--blackShadow);
+  --shadow-white: var(--whiteShadow);
 }
 
 body {
