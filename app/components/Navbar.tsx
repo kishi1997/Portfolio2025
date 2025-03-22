@@ -75,17 +75,17 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#">
+            <Link className="font-Ovo" href="#service">
               SERVICES
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#">
+            <Link className="font-Ovo" href="#work">
               WORK
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#">
+            <Link className="font-Ovo" href="#contact">
               CONTACT ME
             </Link>
           </li>
