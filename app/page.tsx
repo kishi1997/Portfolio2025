@@ -27,36 +27,37 @@ export default function Home() {
     // サーバーサイドの場合のデフォルト値
     return false;
   });
+  const [mounted, setMounted] = useState(false); // クライアントがマウントされたかを追跡
+  useEffect(() => {
+    setMounted(true); // クライアント側でレンダリングが完了したことを確認
+  }, []);
 
-  // コンポーネントマウント時にテーマを再確認
-  // ローカルストレージとシステム設定の両方をチェック
   useEffect(() => {
     if (
-      localStorage.theme === "dark" || // ローカルストレージがダークモード
-      (!("theme" in localStorage) && // ローカルストレージに設定がなく
-        window.matchMedia("(prefers-color-scheme: dark)").matches) // システム設定がダークモード
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       setIsDarkMode(true);
     } else {
       setIsDarkMode(false);
     }
-  }, []); // マウント時のみ実行
+  }, []);
 
-  // isDarkModeの値が変更されたときにHTMLのクラスとローカルストレージを更新
   useEffect(() => {
     if (isDarkMode) {
-      // ダークモードの場合、HTMLのルート要素にdarkクラスを追加
       document.documentElement.classList.add("dark");
-      // ユーザー設定を保存
       localStorage.theme = "dark";
     } else {
-      // ライトモードの場合、HTMLのルート要素からdarkクラスを削除
       document.documentElement.classList.remove("dark");
-      // ユーザー設定を保存
       localStorage.theme = "light";
     }
-  }, [isDarkMode]); // isDarkModeが変更されるたびに実行
+  }, [isDarkMode]);
 
+  // マウントされるまで何も表示しない
+  if (!mounted) {
+    return null;
+  }
   return (
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />

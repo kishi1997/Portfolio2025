@@ -1,3 +1,4 @@
+"use client";
 import { assets } from "@/assets/assets";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -57,14 +58,14 @@ const Contact = () => {
             name="name"
             placeholder="Enter your name"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:norder-white/90"
+            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
           />
           <input
             type="email"
             name="email"
             placeholder="Enter your email"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:norder-white/90"
+            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
           />
         </div>
         <textarea
@@ -72,7 +73,7 @@ const Contact = () => {
           rows={6}
           placeholder="Enter your message"
           required
-          className="w-full p-4 mb-6 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:norder-white/90"
+          className="w-full p-4 mb-6 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
         ></textarea>
         <button
           className="cursor-pointer py-3 px-8 flex items-center justify-between gap-2 bg-black/80 text-white 

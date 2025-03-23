@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
@@ -32,7 +33,8 @@ const About = ({ isDarkMode }: AboutProps) => {
               <li
                 key={index}
                 className="border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer 
-                hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500 dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
+                hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500 dark:border-white 
+                dark:hover:shadow-white dark:hover:bg-darkHover"
               >
                 <Image
                   src={isDarkMode ? info.iconDark : info.icon}
@@ -57,7 +59,8 @@ const About = ({ isDarkMode }: AboutProps) => {
             {toolsData.map((tool, index) => (
               <li
                 key={index}
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500"
+                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 
+                rounded-lg cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500"
               >
                 <Image
                   src={tool}

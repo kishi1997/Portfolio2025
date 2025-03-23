@@ -1,3 +1,4 @@
+"use client";
 import { assets, workData } from "@/assets/assets";
 import React from "react";
 import Image from "next/image";
@@ -15,12 +16,14 @@ const Work = ({ isDarkMode }: WorkProps) => {
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         Welcome to my portfolio! I am a front-end web developer.
       </p>
-      <div className="grid grid-cols-(--autofit-cols-200) gap-5 my-10 dark:text-black">
+      <div className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black">
         {workData.map((work, index) => (
           <div
             key={index}
             style={{ backgroundImage: `url(${work.bgImage})` }}
-            className="aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer"
+            className="
+            aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
+            p-6 rounded-xl cursor-pointer"
           >
             <div
               className="bg-white w-10/12 rounded-md absolute bottom-5
@@ -45,7 +48,6 @@ const Work = ({ isDarkMode }: WorkProps) => {
             </div>
           </div>
         ))}
-        ;
       </div>
       <Link
         href=""

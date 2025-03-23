@@ -1,3 +1,4 @@
+"use client";
 import React, {
   Dispatch,
   SetStateAction,
@@ -15,7 +16,7 @@ type NavbarProps = {
 };
 
 const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
-  const [isScroll, setIsScroll] = useState(false);
+  const [isScroll, setIsScroll] = useState<boolean>(false);
   // モバイルメニューREF
   const sideMenuRef = useRef<HTMLUListElement>(null);
 
@@ -51,8 +52,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
         <Image
           className="w-full"
           src={assets.header_bg_color}
-          width={0}
-          height={0}
+          width={903}
+          height={688}
           alt="header-bg-color"
         ></Image>
       </div>

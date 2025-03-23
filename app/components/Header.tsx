@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
@@ -15,7 +16,7 @@ const Header = () => {
         />
       </div>
       {/* 自己紹介 */}
-      <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
+      <h3 className="flex items-center gap-2 text-xl md:text-2xl mb-3 font-Ovo">
         Hi! I&apos;m Tomoyuki Kishi
         <Image
           className="rounded-full w-6"
