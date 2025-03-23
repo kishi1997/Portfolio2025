@@ -1,8 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-const Navbar = () => {
+
+type NavbarProps = {
+  isDarkMode: boolean;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+};
+
+const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
   const [isScroll, setIsScroll] = useState(false);
   // モバイルメニューREF
   const sideMenuRef = useRef<HTMLUListElement>(null);
@@ -35,7 +47,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]">
+      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
         <Image
           className="w-full"
           src={assets.header_bg_color}
@@ -46,7 +58,11 @@ const Navbar = () => {
       </div>
       <nav
         className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50
-            ${isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm" : ""} `}
+            ${
+              isScroll
+                ? "bg-white/50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-violet-50/20"
+                : ""
+            } `}
       >
         {/* logo  */}
         <a href="#top">
@@ -54,14 +70,16 @@ const Navbar = () => {
             width={109}
             height={29}
             alt="logo"
-            src={assets.logo}
+            src={isDarkMode ? assets.logo_dark : assets.logo}
             className="w-40 cursor-pointer mr-14"
           />
         </a>
         {/* PC-menu  */}
         <ul
           className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
-            isScroll ? "" : "bg-white/50 shadow-sm"
+            isScroll
+              ? ""
+              : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent"
           } `}
         >
           <li>
@@ -92,26 +110,26 @@ const Navbar = () => {
         </ul>
         <div className="flex items-center gap-4">
           {/* dark-mode切り替えボタン */}
-          <button>
+          <button onClick={() => setIsDarkMode((prev: boolean) => !prev)}>
             <Image
               width={48}
               height={48}
               alt="moon"
-              src={assets.moon_icon}
+              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
               className="w-6"
             />
           </button>
           {/* コンタクトボタン */}
           <Link
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo"
+            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50"
             href="#contact"
           >
-            CONTACT{" "}
+            CONTACT
             <Image
               width={20}
               height={20}
               alt="arrow"
-              src={assets.arrow_icon}
+              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
               className="w-3"
             />
           </Link>
@@ -121,7 +139,7 @@ const Navbar = () => {
               width={48}
               height={48}
               alt="menu"
-              src={assets.menu_black}
+              src={isDarkMode ? assets.menu_white : assets.menu_black}
               className="w-6"
             />
           </button>
@@ -129,14 +147,15 @@ const Navbar = () => {
         {/* mobile-menu  */}
         <ul
           ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500"
+          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 
+          z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
         >
           <div className="absolute top-6 right-6" onClick={closeMenu}>
             <Image
               width={29}
               height={29}
               alt="close-icon"
-              src={assets.close_black}
+              src={isDarkMode ? assets.close_white : assets.close_black}
               className="w-5 cursor-pointer"
             ></Image>
           </div>

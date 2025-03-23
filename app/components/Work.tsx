@@ -3,7 +3,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Work = () => {
+type WorkProps = {
+  isDarkMode: boolean;
+};
+
+const Work = ({ isDarkMode }: WorkProps) => {
   return (
     <div id="work" className="w-full px-[12%] py-10 scroll-mt-20">
       <h4 className="text-center mb-2 text-lg font-Ovo">My Portfolio</h4>
@@ -11,7 +15,7 @@ const Work = () => {
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         Welcome to my portfolio! I am a front-end web developer.
       </p>
-      <div className="grid grid-cols-(--autofit-cols-200) gap-5 my-10">
+      <div className="grid grid-cols-(--autofit-cols-200) gap-5 my-10 dark:text-black">
         {workData.map((work, index) => (
           <div
             key={index}
@@ -46,11 +50,14 @@ const Work = () => {
       <Link
         href=""
         className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px]
-       border-gray-700 p-6 rounded-full py-3 px-10 mx-auto duration-500 hover:bg-lightHover hover:-translate-y-1 "
+       border-gray-700 p-6 rounded-full py-3 px-10 mx-auto duration-500 hover:bg-lightHover 
+       hover:-translate-y-1 dark:text-white dark:border-white dark:hover:bg-darkHover"
       >
         show more
         <Image
-          src={assets.right_arrow_bold}
+          src={
+            isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold
+          }
           alt="right arrow"
           width={0}
           height={0}

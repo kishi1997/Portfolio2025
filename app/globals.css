@@ -1,26 +1,31 @@
 @import "tailwindcss";
+/* ダークモード有効化 */
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --lightHover: #fcf4ff;
-  --darkHover: #2a004a;
-  --darkTheme: #11001f;
   --blackShadow: 4px 4px #000;
   --whiteShadow: 4px 4px #fff;
   --autofit-cols-200: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --color-lightHover: var(--lightHover);
   --font-Outfit: var(--font-outfit);
   --font-Ovo: var(--font-ovo);
   --shadow-black: var(--blackShadow);
   --shadow-white: var(--whiteShadow);
 }
-
+@media (prefers-color-scheme: dark) {
+  :root {
+    --darkTheme: #11001f;
+    --darkHover: #2a004a;
+  }
+  @theme inline {
+    --color-darkTheme: var(--darkTheme);
+    --color-darkHover: var(--darkHover);
+  }
+}
 body {
   font-family: var(--font-outfit);
 }
