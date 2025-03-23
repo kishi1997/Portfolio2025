@@ -1,3 +1,4 @@
+"use client";
 import { assets, serviceData } from "@/assets/assets";
 import React from "react";
 import Image from "next/image";
@@ -17,7 +18,7 @@ const Service = () => {
             key={index}
             className="
             border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer hover:bg-lightHover
-             hover:-translate-y-1 hover:shadow-black duration-500"
+             hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover dark:hover:shadow-white"
           >
             <Image
               src={service.icon}
@@ -26,13 +27,15 @@ const Service = () => {
               alt="service-icon"
               className="w-10"
             />
-            <h3 className="my-4 text-gray-700 text-lg">{service.title}</h3>
-            <p className="text-sm text-gray-600 leading-5">
+            <h3 className="my-4 text-gray-700 text-lg dark:text-white">
+              {service.title}
+            </h3>
+            <p className="text-sm text-gray-600 leading-5 dark:text-white">
               {service.description}
             </p>
             <Link
               href={service.link}
-              className="flex items-center gap-2 text-sm mt-5"
+              className="flex items-center gap-2 text-sm mt-5 dark:text-white"
             >
               Read more
               <Image

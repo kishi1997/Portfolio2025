@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
@@ -15,7 +16,7 @@ const Header = () => {
         />
       </div>
       {/* 自己紹介 */}
-      <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
+      <h3 className="flex items-center gap-2 text-xl md:text-2xl mb-3 font-Ovo">
         Hi! I&apos;m Tomoyuki Kishi
         <Image
           className="rounded-full w-6"
@@ -37,7 +38,8 @@ const Header = () => {
         {/* CVボタン */}
         <Link
           href="#contact"
-          className="px-10 py-3 border border-white bg-black text-white rounded-full flex items-center gap-2 duration-500 hover:-translate-y-1 "
+          className="px-10 py-3 border border-white bg-black text-white rounded-full 
+          flex items-center gap-2 duration-500 hover:-translate-y-1 dark:bg-transparent"
         >
           Contact me
           <Image
@@ -52,7 +54,8 @@ const Header = () => {
         <Link
           href="/sample-resume.pdf"
           download
-          className="px-10 py-3 border border-gray-500 rounded-full flex items-center gap-2 duration-500 hover:-translate-y-1 "
+          className="px-10 py-3 border border-gray-500 rounded-full flex items-center gap-2 
+          duration-500 hover:-translate-y-1 bg-white dark: text-black"
         >
           My resume
           <Image

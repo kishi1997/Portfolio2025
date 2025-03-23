@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
-const About = () => {
+
+type AboutProps = {
+  isDarkMode: boolean;
+};
+
+const About = ({ isDarkMode }: AboutProps) => {
   return (
     <div id="about" className="w-full px-[12%] py-10 scroll-mt-20">
       <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
@@ -26,28 +32,35 @@ const About = () => {
             {infoList.map((info, index) => (
               <li
                 key={index}
-                className="border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500"
+                className="border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer 
+                hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500 dark:border-white 
+                dark:hover:shadow-white dark:hover:bg-darkHover"
               >
                 <Image
-                  src={info.icon}
+                  src={isDarkMode ? info.iconDark : info.icon}
                   width={0}
                   height={0}
                   alt={info.title}
                   className="w-6"
                 />
-                <h3 className="my-4 font-semibold text-gray-700">
+                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
                   {info.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{info.description}</p>
+                <p className="text-gray-600 text-sm dark:text-white">
+                  {info.description}
+                </p>
               </li>
             ))}
           </ul>
-          <h4 className="my-6 text-gray-700 font-Ovo">Tools I use</h4>
+          <h4 className="my-6 text-gray-700 font-Ovo dark:text-white">
+            Tools I use
+          </h4>
           <ul className="flex gap-3 sm:gap-5 items-center">
             {toolsData.map((tool, index) => (
               <li
                 key={index}
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500"
+                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 
+                rounded-lg cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500"
               >
                 <Image
                   src={tool}
