@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --lightHover: #f4faff;
+  --lightHover: #fffbd5;
   --blackShadow: 4px 4px #000;
   --whiteShadow: 4px 4px #fff;
   --autofit-cols-200: repeat(auto-fit, minmax(200px, 1fr));
@@ -19,8 +19,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --darkTheme: #00001f;
-    /* --darkHover: #00004a; */
-    --darkHover: #311601;
+    --darkHover: #f4faff;
   }
   @theme inline {
     --color-darkTheme: var(--darkTheme);
