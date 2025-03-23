@@ -77,7 +77,7 @@ const Contact = () => {
         ></textarea>
         <button
           className="cursor-pointer py-3 px-8 flex items-center justify-between gap-2 bg-black/80 text-white 
-          mx-auto rounded-full duration-500 hover:bg-black dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover"
+          mx-auto rounded-full duration-500 hover:bg-black dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover/10"
           type="submit"
         >
           Submit now

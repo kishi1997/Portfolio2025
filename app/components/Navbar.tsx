@@ -111,7 +111,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
         </ul>
         <div className="flex items-center gap-4">
           {/* dark-mode切り替えボタン */}
-          <button onClick={() => setIsDarkMode((prev: boolean) => !prev)}>
+          <button
+            className="cursor-pointer"
+            onClick={() => setIsDarkMode((prev: boolean) => !prev)}
+          >
             <Image
               width={48}
               height={48}
@@ -122,7 +125,8 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
           </button>
           {/* コンタクトボタン */}
           <Link
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50"
+            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full 
+            ml-4 font-Ovo transition duration-500 dark:border-white/50 hover:-translate-y-0.5"
             href="#contact"
           >
             CONTACT

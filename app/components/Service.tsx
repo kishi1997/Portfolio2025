@@ -18,7 +18,7 @@ const Service = () => {
             key={index}
             className="
             border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer hover:bg-lightHover
-             hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover dark:hover:shadow-white"
+             hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover/10 dark:hover:shadow-white"
           >
             <Image
               src={service.icon}
