@@ -3,23 +3,56 @@ import { assets, workData } from "@/assets/assets";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const Work = () => {
   return (
-    <div id="work" className="w-full px-[12%] py-10 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-Ovo">My Portfolio</h4>
-      <h2 className="text-center text-5xl font-Ovo">My latest work</h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
+    <motion.div
+      id="work"
+      className="w-full px-[12%] py-10 scroll-mt-20"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h4
+        className="text-center mb-2 text-lg font-Ovo"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        My Portfolio
+      </motion.h4>
+      <motion.h2
+        className="text-center text-5xl font-Ovo"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        My latest work
+      </motion.h2>
+      <motion.p
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+      >
         Welcome to my portfolio! I am a front-end web developer.
-      </p>
-      <div className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black">
+      </motion.p>
+      <motion.div
+        className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+      >
         {workData.map((work, index) => (
-          <div
+          <motion.div
             key={index}
             style={{ backgroundImage: `url(${work.bgImage})` }}
             className="
             aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
             p-6 rounded-xl cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
             <div
               className="bg-white w-10/12 rounded-md absolute bottom-5
@@ -42,24 +75,28 @@ const Work = () => {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <Link
-        href=""
-        className="w-max mx-auto px-10 py-3 border border-white bg-black text-white rounded-full 
+      </motion.div>
+      <Link href="">
+        <motion.div
+          className="w-max mx-auto px-10 py-3 border border-white bg-black text-white rounded-full 
           flex items-center gap-2 duration-500 hover:-translate-y-1 dark:bg-transparent"
-      >
-        show more
-        <Image
-          className="w-4"
-          src={assets.right_arrow_white}
-          width={0}
-          height={0}
-          alt="right-arrow-white"
-        />
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
+          show more
+          <Image
+            className="w-4"
+            src={assets.right_arrow_white}
+            width={0}
+            height={0}
+            alt="right-arrow-white"
+          />
+        </motion.div>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

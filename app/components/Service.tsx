@@ -3,22 +3,55 @@ import { assets, serviceData } from "@/assets/assets";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const Service = () => {
   return (
-    <div id="service" className="w-full px-[12%] py-10 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-Ovo">What I offer</h4>
-      <h2 className="text-center text-5xl font-Ovo">My Services</h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
+    <motion.div
+      id="service"
+      className="w-full px-[12%] py-10 scroll-mt-20"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h4
+        className="text-center mb-2 text-lg font-Ovo"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        What I offer
+      </motion.h4>
+      <motion.h2
+        className="text-center text-5xl font-Ovo"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        My Services
+      </motion.h2>
+      <motion.p
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+      >
         I am a front-end web developer.
-      </p>
-      <div className="grid grid-cols-(--autofit-cols-200) gap-6 my-10">
+      </motion.p>
+      <motion.div
+        className="grid grid-cols-(--autofit-cols-200) gap-6 my-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+      >
         {serviceData.map((service, index) => (
-          <div
+          <motion.div
             key={index}
             className="
             border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer hover:bg-lightHover
              hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover/10 dark:hover:shadow-white"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
             <Image
               src={service.icon}
@@ -46,10 +79,10 @@ const Service = () => {
                 alt="right-arrow"
               />
             </Link>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
