@@ -27,7 +27,7 @@ const Footer = ({ isDarkMode }: FooterProps) => {
             width={0}
             height={0}
           />
-          bgmwork9634@gmail.com
+          <Link href="mailto:bgmwork9634@gmail">bgmwork9634@gmail.com</Link>
         </div>
       </div>
       <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6">

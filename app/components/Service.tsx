@@ -36,7 +36,7 @@ const Service = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
       >
-        I am a front-end web developer.
+        I can offer a wide range of services to help you achieve your goals.
       </motion.p>
       <motion.div
         className="grid grid-cols-(--autofit-cols-200) gap-6 my-10"
@@ -49,8 +49,7 @@ const Service = () => {
             key={index}
             className="
             border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer hover:bg-lightHover
-             hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover/10 dark:hover:shadow-white"
-            whileHover={{ scale: 1.05 }}
+             hover:-translate-y-1 hover:shadow-black duration-500 dark:hover:bg-darkHover/5 dark:hover:shadow-white"
             transition={{ duration: 0.3 }}
           >
             <Image

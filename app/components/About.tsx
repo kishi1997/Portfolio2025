@@ -60,9 +60,10 @@ const About = ({ isDarkMode }: AboutProps) => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <p className="mb-10 max-w-2xl font-Ovp">
-            I am a front-end web developer who is currently based in Vancouver,
-            Canada. I have a passion for creating visually stunning and
-            user-friendly websites.
+            I&apos;m 28 years old and from Tokyo, Japan. My hobbies include
+            watching dramas, movies, and reading comics. In addition, I enjoy
+            playing basketball and watching NBA games. One of my dreams is to go
+            to America and watch NBA games there.
           </p>
           <motion.ul
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
@@ -75,8 +76,7 @@ const About = ({ isDarkMode }: AboutProps) => {
                 key={index}
                 className="border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer 
                 hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500 dark:border-white 
-                dark:hover:shadow-white dark:hover:bg-darkHover/15"
-                whileHover={{ scale: 1.05 }}
+                dark:hover:shadow-white dark:hover:bg-darkHover/5"
                 transition={{ duration: 0.3 }}
               >
                 <Image
@@ -113,8 +113,7 @@ const About = ({ isDarkMode }: AboutProps) => {
               <motion.li
                 key={index}
                 className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 
-                rounded-lg cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 dark:hover:bg-darkHover"
-                whileHover={{ scale: 1.1 }}
+                rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
                 transition={{ duration: 0.3 }}
               >
                 <Image

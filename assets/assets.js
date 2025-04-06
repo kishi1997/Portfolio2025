@@ -6,10 +6,10 @@ import edu_icon_dark from "./edu-icon-dark.png";
 import project_icon from "./project-icon.png";
 import project_icon_dark from "./project-icon-dark.png";
 import vscode from "./vscode.png";
-import firebase from "./firebase.png";
+import github_white from "./github-white.png";
 import figma from "./figma.png";
-import git from "./git.png";
-import mongodb from "./mongodb.png";
+import cursor from "./cursor.svg";
+import supabase from "./supabase.svg";
 import right_arrow_white from "./right-arrow-white.png";
 import logo from "./logo.svg";
 import logo_dark from "./logo_dark.svg";
@@ -28,9 +28,8 @@ import menu_white from "./menu-white.png";
 import close_black from "./close-black.png";
 import close_white from "./close-white.png";
 import web_icon from "./web-icon.png";
-import mobile_icon from "./mobile-icon.png";
-import ui_icon from "./ui-icon.png";
-import graphics_icon from "./graphics-icon.png";
+import wordpress_icon from "./wordpress-icon.png";
+import backend_icon from "./backend-icon.svg";
 import right_arrow from "./right-arrow.png";
 import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
@@ -45,10 +44,10 @@ export const assets = {
   project_icon,
   project_icon_dark,
   vscode,
-  firebase,
+  github_white,
+  cursor,
   figma,
-  git,
-  mongodb,
+  supabase,
   right_arrow_white,
   logo,
   logo_dark,
@@ -67,34 +66,33 @@ export const assets = {
   close_black,
   close_white,
   web_icon,
-  mobile_icon,
-  ui_icon,
-  graphics_icon,
+  wordpress_icon,
   right_arrow,
   send_icon,
   right_arrow_bold,
   right_arrow_bold_dark,
+  backend_icon,
 };
 
 export const workData = [
   {
     title: "Frontend project",
-    description: "Web Design",
+    description: "Web Development",
     bgImage: "/work-1.png",
   },
   {
-    title: "Geo based app",
-    description: "Mobile App",
+    title: "Backend project",
+    description: "Build API",
     bgImage: "/work-2.png",
   },
   {
-    title: "Photography site",
-    description: "Web Design",
+    title: "Wordpress site",
+    description: "Wordpress Theme",
     bgImage: "/work-3.png",
   },
   {
-    title: "UI/UX designing",
-    description: "UI/UX Design",
+    title: "Web designing",
+    description: "Web Design by Figma",
     bgImage: "/work-4.png",
   },
 ];
@@ -102,28 +100,23 @@ export const workData = [
 export const serviceData = [
   {
     icon: assets.web_icon,
-    title: "Web design",
-    description: "Web development is the process of building, programming...",
-    link: "",
-  },
-  {
-    icon: assets.mobile_icon,
-    title: "Mobile app",
+    title: "Frontend development",
     description:
-      "Mobile app development involves creating software for mobile devices...",
+      "Frontend development involves designing and implementing the parts of applications that users interact with directly, using technologies such as React, Next.js, and TypeScript. This includes creating visual elements, optimizing user interfaces, and enhancing the overall user experience.",
     link: "",
   },
   {
-    icon: assets.ui_icon,
-    title: "UI/UX design",
+    icon: assets.backend_icon,
+    title: "Backend Development",
     description:
-      "UI/UX design focuses on creating a seamless user experience...",
+      "Web application development involves building APIs and databases using technologies such as TypeScript, Node.js, TypeORM, and Express. This process includes creating the backend infrastructure that supports the functionality of web applications, ensuring data management and communication between the server and client.",
     link: "",
   },
   {
-    icon: assets.graphics_icon,
-    title: "Graphics design",
-    description: "Creative design solutions to enhance visual communication...",
+    icon: assets.wordpress_icon,
+    title: "WordPress Theme Development",
+    description:
+      "WordPress theme development involves creating custom themes for WordPress websites, allowing for unique designs and functionalities tailored to specific needs. This process includes understanding the WordPress architecture, utilizing PHP, HTML, CSS, and JavaScript to build responsive and user-friendly themes that enhance the overall website experience.",
     link: "",
   },
 ];
@@ -133,13 +126,13 @@ export const infoList = [
     icon: assets.code_icon,
     iconDark: assets.code_icon_dark,
     title: "Languages",
-    description: "HTML, CSS, JavaScript React Js, Next Js",
+    description: "HTML, CSS, TypeScript React Js, Next Js, Wordpress ...",
   },
   {
     icon: assets.edu_icon,
     iconDark: assets.edu_icon_dark,
     title: "Education",
-    description: "B.Tech in Computer Science",
+    description: "CHUO university in Economics",
   },
   {
     icon: assets.project_icon,
@@ -150,9 +143,9 @@ export const infoList = [
 ];
 
 export const toolsData = [
+  assets.cursor,
   assets.vscode,
-  assets.firebase,
-  assets.mongodb,
+  assets.github_white,
+  assets.supabase,
   assets.figma,
-  assets.git,
 ];

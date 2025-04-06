@@ -51,7 +51,6 @@ const Work = () => {
             className="
             aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
             p-6 rounded-xl cursor-pointer"
-            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
             <div

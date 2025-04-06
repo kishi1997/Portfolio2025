@@ -101,7 +101,7 @@ const Contact = () => {
             name="email"
             placeholder="Enter your email"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
+            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
           />
         </div>
         <motion.textarea
@@ -112,7 +112,7 @@ const Contact = () => {
           rows={6}
           placeholder="Enter your message"
           required
-          className="w-full p-4 mb-6 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
+          className="w-full p-4 mb-6 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
         ></motion.textarea>
         <motion.button
           whileHover={{ scale: 1.05 }}
