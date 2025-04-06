@@ -62,7 +62,7 @@ const Header = () => {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="px-10 py-3 border border-white bg-black text-white rounded-full 
+            className="px-10 py-3 border border-white bg-black text-white rounded-full hover:-translate-y-1 duration-500
               flex items-center gap-2 dark:bg-transparent"
           >
             Contact me
@@ -81,7 +81,7 @@ const Header = () => {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full bg-white dark: text-black"
+            className="flex items-center gap-2 px-10 py-3 border border-gray-500 rounded-full bg-white dark: text-black  hover:-translate-y-1 duration-500"
           >
             My resume
             <Image
