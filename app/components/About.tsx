@@ -1,14 +1,11 @@
 "use client";
 import React, { Fragment } from "react";
 import Image from "next/image";
-import { assets, infoList, stackData } from "@/assets/assets";
+import { assets, stackData } from "@/assets/assets";
 import { motion } from "motion/react";
 // import { twMerge } from "tailwind-merge";
-type AboutProps = {
-  isDarkMode: boolean;
-};
 
-const About = ({ isDarkMode }: AboutProps) => {
+const About = () => {
   return (
     <motion.div
       id="about"
@@ -54,25 +51,41 @@ const About = ({ isDarkMode }: AboutProps) => {
           />
         </motion.div>
         <motion.div
-          className="flex-1 overflow-hidden"
+          className="flex-1 overflow-hidden w-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <p className="mb-10 max-w-2xl font-Ovp">
-            I&apos;m 28 years old and from Tokyo, Japan. My hobbies include
-            watching dramas, movies, and reading comics. In addition, I enjoy
-            playing basketball and watching NBA games. One of my dreams is to go
-            to America and watch NBA games there.
-          </p>
-          <motion.h4
-            className="mb-6 text-gray-700 font-Ovo dark:text-white text-2xl"
+          <motion.div
+            className=" mb-10 text-gray-700 font-Ovo dark:text-white text-2xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, delay: 0.5 }}
           >
-            Tools I use
-          </motion.h4>
+            <h4 className="mb-2 text-gray-700 font-Ovo dark:text-white text-2xl">
+              Introduction
+            </h4>
+            <p className="max-w-2xl font-Ovp text-sm font-medium text-body-color dark:text-dark-6">
+              I&apos;m 28 years old and from Tokyo, Japan. My hobbies include
+              watching dramas, movies, and reading comics. In addition, I enjoy
+              playing basketball and watching NBA games. One of my dreams is to
+              go to America and watch NBA games there.
+            </p>
+          </motion.div>
+          <motion.div
+            className=" mb-6 text-gray-700 font-Ovo dark:text-white"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3, delay: 0.5 }}
+          >
+            <h4 className="mb-2 text-gray-700 font-Ovo dark:text-white text-2xl">
+              Tools I use
+            </h4>
+            <p className="max-w-2xl font-Ovp mb-6 text-sm font-medium text-body-color dark:text-dark-6">
+              I primarily use TypeScript for my web development projects. My
+              go-to editor is Cursor now!
+            </p>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

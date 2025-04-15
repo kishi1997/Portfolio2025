@@ -83,7 +83,6 @@ export const assets = {
   css,
   html,
   react,
-  wordpress,
   nextjs,
   typescript,
   github,
@@ -197,5 +196,63 @@ export const stackData = [
   {
     icon: assets.figma,
     title: "Figma",
+  },
+];
+// src/data/projects.ts (例)
+
+export const sampleProjects = [
+  {
+    slug: "tech-blog-platform",
+    title: "Tech Blog Platform",
+    category: "Full-Stack Development",
+    mainImageUrl: "https://placehold.co/600x400/png",
+    description:
+      "開発者向けのブログプラットフォーム。\nMarkdownエディタ、タグ機能、ユーザー認証を実装。\nNext.jsによるSSR/ISRを活用し、高速な表示とSEOを実現しました。\nデータベースにはSupabaseを使用し、リアルタイム機能も一部導入。",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Prisma",
+    ],
+    liveUrl: "https://example-blog.com",
+    repoUrl: "https://github.com/yourusername/tech-blog",
+  },
+  {
+    slug: "tech-blog-platform",
+    title: "Tech Blog Platform",
+    category: "Full-Stack Development",
+    mainImageUrl: "https://placehold.co/600x400/png",
+    description:
+      "開発者向けのブログプラットフォーム。\nMarkdownエディタ、タグ機能、ユーザー認証を実装。\nNext.jsによるSSR/ISRを活用し、高速な表示とSEOを実現しました。\nデータベースにはSupabaseを使用し、リアルタイム機能も一部導入。",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Prisma",
+    ],
+    liveUrl: "https://example-blog.com",
+    repoUrl: "https://github.com/yourusername/tech-blog",
+  },
+  {
+    slug: "tech-blog-platform",
+    title: "Tech Blog Platform",
+    category: "Full-Stack Development",
+    mainImageUrl: "https://placehold.co/600x400/png",
+    description:
+      "開発者向けのブログプラットフォーム。\nMarkdownエディタ、タグ機能、ユーザー認証を実装。\nNext.jsによるSSR/ISRを活用し、高速な表示とSEOを実現しました。\nデータベースにはSupabaseを使用し、リアルタイム機能も一部導入。",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Prisma",
+    ],
+    liveUrl: "https://example-blog.com",
+    repoUrl: "https://github.com/yourusername/tech-blog",
   },
 ];

@@ -1,3 +1,4 @@
+/* globals.css (追記例) */
 @import "tailwindcss";
 /* ダークモード有効化 */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -16,6 +17,7 @@
   --shadow-black: var(--blackShadow);
   --shadow-white: var(--whiteShadow);
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --darkTheme: #00001f;
@@ -26,16 +28,15 @@
     --color-darkHover: var(--darkHover);
   }
 }
+
 body {
   font-family: var(--font-outfit);
 }
 
 .animate-move-left {
-  /* move-left アニメーションを 10秒かけて線形に無限に繰り返す */
   animation: move-left 50s linear infinite;
 }
 .animate-move-right {
-  /* move-left アニメーションを 10秒かけて線形に無限に繰り返す */
   animation: move-right 50s linear infinite;
 }
 @keyframes move-left {

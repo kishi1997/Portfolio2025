@@ -66,7 +66,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
             } `}
       >
         {/* logo  */}
-        <a href="#top">
+        <Link href="/">
           <Image
             width={109}
             height={29}
@@ -74,41 +74,43 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
             src={isDarkMode ? assets.logo_dark : assets.logo}
             className="w-40 cursor-pointer mr-14"
           />
-        </a>
-        {/* PC-menu  */}
-        <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
-            isScroll
-              ? ""
-              : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent"
-          } `}
-        >
-          <li>
-            <Link className="font-Ovo color-foreground" href="#top">
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo" href="#about">
-              ABOUT ME
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo" href="#service">
-              SERVICES
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo" href="#work">
-              WORK
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo" href="#contact">
-              CONTACT ME
-            </Link>
-          </li>
-        </ul>
+        </Link>
+        {/* top-pageでのみ表示するPC-menu  */}
+        {window.location.pathname === "/" && (
+          <ul
+            className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
+              isScroll
+                ? ""
+                : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent"
+            } `}
+          >
+            <li>
+              <Link className="font-Ovo color-foreground" href="#top">
+                HOME
+              </Link>
+            </li>
+            <li>
+              <Link className="font-Ovo" href="#about">
+                ABOUT ME
+              </Link>
+            </li>
+            <li>
+              <Link className="font-Ovo" href="#service">
+                SERVICES
+              </Link>
+            </li>
+            <li>
+              <Link className="font-Ovo" href="#work">
+                WORK
+              </Link>
+            </li>
+            <li>
+              <Link className="font-Ovo" href="#contact">
+                CONTACT ME
+              </Link>
+            </li>
+          </ul>
+        )}
         <div className="flex items-center gap-4">
           {/* dark-mode切り替えボタン */}
           <button

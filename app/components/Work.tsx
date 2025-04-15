@@ -77,7 +77,7 @@ const Work = () => {
           </motion.div>
         ))}
       </motion.div>
-      <Link href="">
+      <Link href="/work">
         <motion.div
           className="w-max mx-auto px-10 py-3 border border-white bg-black text-white rounded-full 
           flex items-center gap-2 duration-500 hover:-translate-y-1 dark:bg-transparent"
