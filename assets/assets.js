@@ -5,8 +5,9 @@ import edu_icon from "./edu-icon.png";
 import edu_icon_dark from "./edu-icon-dark.png";
 import project_icon from "./project-icon.png";
 import project_icon_dark from "./project-icon-dark.png";
-import vscode from "./vscode.png";
+import vscode from "./vscode.svg";
 import github_white from "./github-white.png";
+import github from "./github.svg";
 import figma from "./figma.png";
 import cursor from "./cursor.svg";
 import supabase from "./supabase.svg";
@@ -34,6 +35,12 @@ import right_arrow from "./right-arrow.png";
 import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
+import css from "./css3.svg";
+import html from "./html.svg";
+import react from "./react.svg";
+import wordpress from "./wordpress.svg";
+import typescript from "./typescript.svg";
+import nextjs from "./nextjs.svg";
 
 export const assets = {
   user_image,
@@ -67,11 +74,19 @@ export const assets = {
   close_white,
   web_icon,
   wordpress_icon,
+  wordpress,
   right_arrow,
   send_icon,
   right_arrow_bold,
   right_arrow_bold_dark,
   backend_icon,
+  css,
+  html,
+  react,
+  wordpress,
+  nextjs,
+  typescript,
+  github,
 };
 
 export const workData = [
@@ -122,30 +137,65 @@ export const serviceData = [
 ];
 
 export const infoList = [
-  {
-    icon: assets.code_icon,
-    iconDark: assets.code_icon_dark,
-    title: "Languages",
-    description: "HTML, CSS, TypeScript React Js, Next Js, Wordpress ...",
-  },
+  // {
+  //   icon: assets.code_icon,
+  //   iconDark: assets.code_icon_dark,
+  //   title: "Languages",
+  //   description: "HTML, CSS, TypeScript React Js, Next Js, Wordpress ...",
+  // },
   {
     icon: assets.edu_icon,
     iconDark: assets.edu_icon_dark,
     title: "Education",
     description: "CHUO university in Economics",
   },
-  {
-    icon: assets.project_icon,
-    iconDark: assets.project_icon_dark,
-    title: "Projects",
-    description: "Built more than 5 projects",
-  },
+  // {
+  //   icon: assets.project_icon,
+  //   iconDark: assets.project_icon_dark,
+  //   title: "Projects",
+  //   description: "Built more than 5 projects",
+  // },
 ];
 
-export const toolsData = [
-  assets.cursor,
-  assets.vscode,
-  assets.github_white,
-  assets.supabase,
-  assets.figma,
+export const stackData = [
+  {
+    icon: assets.html,
+    title: "HTML5",
+  },
+  {
+    icon: assets.css,
+    title: "CSS3",
+  },
+  {
+    icon: assets.typescript,
+    title: "TypeScript",
+  },
+  {
+    icon: assets.react,
+    title: "React",
+  },
+  {
+    icon: assets.nextjs,
+    title: "Next.Js",
+  },
+  {
+    icon: assets.wordpress,
+    title: "Wordpress",
+  },
+  {
+    icon: assets.vscode,
+    title: "VSCode",
+  },
+  {
+    icon: assets.cursor,
+    title: "Cursor",
+  },
+  {
+    icon: assets.github,
+    title: "Github",
+  },
+  {
+    icon: assets.figma,
+    title: "Figma",
+  },
 ];

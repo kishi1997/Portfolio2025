@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import Image from "next/image";
-import { assets, infoList, toolsData } from "@/assets/assets";
+import { assets, infoList, stackData } from "@/assets/assets";
 import { motion } from "motion/react";
-
+// import { twMerge } from "tailwind-merge";
 type AboutProps = {
   isDarkMode: boolean;
 };
@@ -54,7 +54,7 @@ const About = ({ isDarkMode }: AboutProps) => {
           />
         </motion.div>
         <motion.div
-          className="flex-1"
+          className="flex-1 overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
@@ -65,7 +65,68 @@ const About = ({ isDarkMode }: AboutProps) => {
             playing basketball and watching NBA games. One of my dreams is to go
             to America and watch NBA games there.
           </p>
-          <motion.ul
+          <motion.h4
+            className="mb-6 text-gray-700 font-Ovo dark:text-white text-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3, delay: 0.5 }}
+          >
+            Tools I use
+          </motion.h4>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3, delay: 0.5 }}
+            className="overflow-hidden border border-gray-500 rounded-xl"
+          >
+            <div className="overflow-x-clip [mask-image:_linear-gradient(to_right,_transparent_0,_white_18px,white_calc(100%-18px),_transparent_100%)] py-8 px-4">
+              <div className="flex flex-none gap-6 items-center animate-move-left w-max">
+                {[...new Array(2)].fill(0).map((_, index) => (
+                  <Fragment key={index}>
+                    {stackData.map((stack, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/10 max-w-xs flex items-center gap-1 px-4 py-2 rounded-2xl"
+                      >
+                        <span className="w-6 h-6">
+                          <Image
+                            src={stack.icon}
+                            width={96}
+                            height={96}
+                            alt={stack.title}
+                          />
+                        </span>
+                        <span className="text-xs">{stack.title}</span>
+                      </div>
+                    ))}
+                  </Fragment>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-none gap-6 items-center animate-move-right w-max">
+                {[...new Array(2)].fill(0).map((_, index) => (
+                  <Fragment key={index}>
+                    {stackData.map((stack, index) => (
+                      <div
+                        key={index}
+                        className="bg-white/10 max-w-xs flex items-center gap-1 px-4 py-2 rounded-2xl"
+                      >
+                        <span className="w-6 h-6">
+                          <Image
+                            src={stack.icon}
+                            width={96}
+                            height={96}
+                            alt={stack.title}
+                          />
+                        </span>
+                        <span className="text-xs">{stack.title}</span>
+                      </div>
+                    ))}
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+          {/* <motion.ul
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -94,38 +155,7 @@ const About = ({ isDarkMode }: AboutProps) => {
                 </p>
               </motion.li>
             ))}
-          </motion.ul>
-          <motion.h4
-            className="my-6 text-gray-700 font-Ovo dark:text-white"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.3, delay: 0.5 }}
-          >
-            Tools I use
-          </motion.h4>
-          <motion.ul
-            className="flex gap-3 sm:gap-5 items-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.6 }}
-          >
-            {toolsData.map((tool, index) => (
-              <motion.li
-                key={index}
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 
-                rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={tool}
-                  width={0}
-                  height={0}
-                  alt="tool"
-                  className="w-5 sm:w-7"
-                />
-              </motion.li>
-            ))}
-          </motion.ul>
+          </motion.ul> */}
         </motion.div>
       </motion.div>
     </motion.div>
