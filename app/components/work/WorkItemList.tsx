@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import TechTag from "../TechTag";
+import Image from "next/image";
 
 type Project = {
   slug: string;
@@ -38,7 +39,9 @@ const WorkItemList = () => {
         <div className="aspect-video overflow-hidden">
           {" "}
           {/* 画像のアスペクト比を固定 */}
-          <img
+          <Image
+            width={600}
+            height={400}
             src={project.mainImageUrl}
             alt={`${project.title} main image`}
             className="w-full h-full object-cover" // 画像がコンテナに合わせてカバーされるように
