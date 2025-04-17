@@ -40,6 +40,7 @@ const Work = () => {
       >
         Welcome to my portfolio! I am a front-end web developer.
       </motion.p>
+
       <motion.div
         className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black"
         initial={{ opacity: 0 }}
@@ -55,7 +56,6 @@ const Work = () => {
           p-6 rounded-xl cursor-pointer"
             transition={{ duration: 0.3 }}
           >
-            console.log(bgImage); console.log(assets.profile_img);
             <div
               className="bg-white w-10/12 rounded-md absolute bottom-5
              left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7"
