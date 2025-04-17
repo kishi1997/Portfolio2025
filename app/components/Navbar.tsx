@@ -73,11 +73,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
             width={109}
             height={29}
             alt="logo"
-            src={
-              isDarkMode
-                ? `${BASE_PATH}/${assets.logo_dark}`
-                : `${BASE_PATH}/${assets.logo}`
-            }
+            src={isDarkMode ? assets.logo_dark : assets.logo}
             className="w-40 cursor-pointer mr-14"
           />
         </a>
