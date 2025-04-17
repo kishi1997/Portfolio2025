@@ -136,27 +136,6 @@ export const serviceData = [
   },
 ];
 
-export const infoList = [
-  // {
-  //   icon: assets.code_icon,
-  //   iconDark: assets.code_icon_dark,
-  //   title: "Languages",
-  //   description: "HTML, CSS, TypeScript React Js, Next Js, Wordpress ...",
-  // },
-  {
-    icon: assets.edu_icon,
-    iconDark: assets.edu_icon_dark,
-    title: "Education",
-    description: "CHUO university in Economics",
-  },
-  // {
-  //   icon: assets.project_icon,
-  //   iconDark: assets.project_icon_dark,
-  //   title: "Projects",
-  //   description: "Built more than 5 projects",
-  // },
-];
-
 export const stackData = [
   {
     icon: assets.html,

@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import nextConfig from "../../next.config";
+const BASE_PATH = nextConfig.basePath || "";
 
 const Service = () => {
   return (
@@ -53,7 +55,7 @@ const Service = () => {
             transition={{ duration: 0.3 }}
           >
             <Image
-              src={service.icon}
+              src={`${BASE_PATH}/${service.icon}`}
               width={0}
               height={0}
               alt="service-icon"
@@ -72,7 +74,7 @@ const Service = () => {
               Read more
               <Image
                 className="w-4"
-                src={assets.right_arrow}
+                src={`${BASE_PATH}/${assets.right_arrow}`}
                 width={0}
                 height={0}
                 alt="right-arrow"

@@ -1,14 +1,12 @@
 "use client";
 import React, { Fragment } from "react";
 import Image from "next/image";
-import { assets, infoList, stackData } from "@/assets/assets";
+import { assets, stackData } from "@/assets/assets";
 import { motion } from "motion/react";
-// import { twMerge } from "tailwind-merge";
-type AboutProps = {
-  isDarkMode: boolean;
-};
+import nextConfig from "../../next.config";
+const BASE_PATH = nextConfig.basePath || "";
 
-const About = ({ isDarkMode }: AboutProps) => {
+const About = () => {
   return (
     <motion.div
       id="about"
@@ -46,7 +44,7 @@ const About = ({ isDarkMode }: AboutProps) => {
           transition={{ duration: 0.6 }}
         >
           <Image
-            src={assets.user_image}
+            src={`${BASE_PATH}/${assets.user_image}`}
             width={400}
             height={538}
             alt="user"
@@ -90,7 +88,7 @@ const About = ({ isDarkMode }: AboutProps) => {
                       >
                         <span className="w-6 h-6">
                           <Image
-                            src={stack.icon}
+                            src={`${BASE_PATH}/${stack.icon}`}
                             width={96}
                             height={96}
                             alt={stack.title}
@@ -112,7 +110,7 @@ const About = ({ isDarkMode }: AboutProps) => {
                       >
                         <span className="w-6 h-6">
                           <Image
-                            src={stack.icon}
+                            src={`${BASE_PATH}/${stack.icon}`}
                             width={96}
                             height={96}
                             alt={stack.title}
@@ -126,36 +124,6 @@ const About = ({ isDarkMode }: AboutProps) => {
               </div>
             </div>
           </motion.div>
-          {/* <motion.ul
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            {infoList.map((info, index) => (
-              <motion.li
-                key={index}
-                className="border-[0.5px] border-gray-400 p-6 rounded-xl cursor-pointer 
-                hover:bg-lightHover hover:-translate-y-1 hover:shadow-black duration-500 dark:border-white 
-                dark:hover:shadow-white dark:hover:bg-darkHover/5"
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={isDarkMode ? info.iconDark : info.icon}
-                  width={0}
-                  height={0}
-                  alt={info.title}
-                  className="w-6"
-                />
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
-                  {info.title}
-                </h3>
-                <p className="text-gray-600 text-sm dark:text-white">
-                  {info.description}
-                </p>
-              </motion.li>
-            ))}
-          </motion.ul> */}
         </motion.div>
       </motion.div>
     </motion.div>
