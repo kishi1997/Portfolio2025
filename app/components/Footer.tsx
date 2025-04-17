@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
+import nextConfig from "../../next.config";
+const BASE_PATH = nextConfig.basePath || "";
 
 type FooterProps = {
   isDarkMode: boolean;
@@ -13,7 +15,11 @@ const Footer = ({ isDarkMode }: FooterProps) => {
     <div className="mt-20">
       <div className="text-center">
         <Image
-          src={isDarkMode ? assets.logo_dark : assets.logo}
+          src={
+            isDarkMode
+              ? `${BASE_PATH}/${assets.logo_dark}`
+              : `${BASE_PATH}/${assets.logo}`
+          }
           className="w-36 mx-auto mb-2"
           alt="logo"
           width={0}
@@ -21,7 +27,7 @@ const Footer = ({ isDarkMode }: FooterProps) => {
         />
         <div className="w-max flex items-center gap-2 mx-auto">
           <Image
-            src={assets.mail_icon}
+            src={`${BASE_PATH}/${assets.mail_icon}`}
             className="w-6"
             alt="mail-icon"
             width={0}
