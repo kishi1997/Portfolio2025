@@ -4,8 +4,7 @@ import Image from "next/image";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
 import { motion } from "motion/react";
-import nextConfig from "../../next.config";
-const BASE_PATH = nextConfig.basePath || "";
+
 const Header = () => {
   return (
     <div className="h-screen w-11/12 max-w-3xl mx-auto text-center flex flex-col items-center justify-center gap-4">
@@ -16,7 +15,7 @@ const Header = () => {
       >
         <Image
           className="rounded-full w-32"
-          src={`${BASE_PATH}/${assets.profile_img}`}
+          src={assets.profile_img}
           width={158}
           height={158}
           alt="profile-img"
@@ -32,10 +31,10 @@ const Header = () => {
         Hi! I&apos;m Tomoyuki Kishi
         <Image
           className="rounded-full w-6"
-          src={`${BASE_PATH}/${assets.hand_icon}`}
+          src={assets.hand_icon}
           width={0}
           height={0}
-          alt="hand-icon"
+          alt="hand-icon2"
         />
       </motion.h3>
       <motion.h1
@@ -69,7 +68,7 @@ const Header = () => {
             Contact me
             <Image
               className="w-4"
-              src={`${BASE_PATH}/${assets.right_arrow_white}`}
+              src={assets.right_arrow_white}
               width={0}
               height={0}
               alt="right-arrow-white"
@@ -87,7 +86,7 @@ const Header = () => {
             My resume
             <Image
               className="w-4"
-              src={`${BASE_PATH}/${assets.download_icon}`}
+              src={assets.download_icon}
               width={0}
               height={0}
               alt="download-icon"

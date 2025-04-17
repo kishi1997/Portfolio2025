@@ -40,6 +40,7 @@ const Work = () => {
       >
         Welcome to my portfolio! I am a front-end web developer.
       </motion.p>
+
       <motion.div
         className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black"
         initial={{ opacity: 0 }}
@@ -49,10 +50,10 @@ const Work = () => {
         {workData.map((work, index) => (
           <motion.div
             key={index}
-            style={{ backgroundImage: `url(${work.bgImage})` }}
+            style={{ backgroundImage: `url(${BASE_PATH}/${work.bgImage})` }}
             className="
-            aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
-            p-6 rounded-xl cursor-pointer"
+          aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
+          p-6 rounded-xl cursor-pointer"
             transition={{ duration: 0.3 }}
           >
             <div
@@ -68,7 +69,7 @@ const Work = () => {
                 items-center justify-center shadow-[2px_2px_0_0] group-hover:bg-yellow-300 transition"
               >
                 <Image
-                  src={`${BASE_PATH}/${assets.send_icon}`}
+                  src={assets.send_icon}
                   width={0}
                   height={0}
                   alt="send-icon"
@@ -90,7 +91,7 @@ const Work = () => {
           show more
           <Image
             className="w-4"
-            src={`${BASE_PATH}/${assets.right_arrow_white}`}
+            src={assets.right_arrow_white}
             width={0}
             height={0}
             alt="right-arrow-white"

@@ -3,8 +3,6 @@ import { assets } from "@/assets/assets";
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import nextConfig from "../../next.config";
-const BASE_PATH = nextConfig.basePath || "";
 
 const Contact = () => {
   const [result, setResult] = useState<string>("");
@@ -126,7 +124,7 @@ const Contact = () => {
           Submit now
           <Image
             className="w-4"
-            src={`${BASE_PATH}/${assets.right_arrow_white}`}
+            src={assets.right_arrow_white}
             width={0}
             height={0}
             alt="right-arrow-white"
