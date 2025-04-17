@@ -4,8 +4,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import nextConfig from "../../next.config";
-const BASE_PATH = nextConfig.basePath || "";
 
 const Work = () => {
   return (
@@ -68,7 +66,7 @@ const Work = () => {
                 items-center justify-center shadow-[2px_2px_0_0] group-hover:bg-yellow-300 transition"
               >
                 <Image
-                  src={`${BASE_PATH}/${assets.send_icon}`}
+                  src={assets.send_icon}
                   width={0}
                   height={0}
                   alt="send-icon"
@@ -90,7 +88,7 @@ const Work = () => {
           show more
           <Image
             className="w-4"
-            src={`${BASE_PATH}/${assets.right_arrow_white}`}
+            src={assets.right_arrow_white}
             width={0}
             height={0}
             alt="right-arrow-white"

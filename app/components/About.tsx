@@ -3,8 +3,6 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { assets, stackData } from "@/assets/assets";
 import { motion } from "motion/react";
-import nextConfig from "../../next.config";
-const BASE_PATH = nextConfig.basePath || "";
 
 const About = () => {
   return (
@@ -44,7 +42,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <Image
-            src={`${BASE_PATH}/${assets.user_image}`}
+            src={assets.user_image}
             width={400}
             height={538}
             alt="user"
@@ -88,7 +86,7 @@ const About = () => {
                       >
                         <span className="w-6 h-6">
                           <Image
-                            src={`${BASE_PATH}/${stack.icon}`}
+                            src={stack.icon}
                             width={96}
                             height={96}
                             alt={stack.title}
@@ -110,7 +108,7 @@ const About = () => {
                       >
                         <span className="w-6 h-6">
                           <Image
-                            src={`${BASE_PATH}/${stack.icon}`}
+                            src={stack.icon}
                             width={96}
                             height={96}
                             alt={stack.title}

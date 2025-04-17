@@ -9,8 +9,6 @@ import React, {
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
-import nextConfig from "../../next.config";
-const BASE_PATH = nextConfig.basePath || "";
 
 type NavbarProps = {
   isDarkMode: boolean;
@@ -53,7 +51,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
       <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
         <Image
           className="w-full"
-          src={`${BASE_PATH}/${assets.header_bg_color}`}
+          src={assets.header_bg_color}
           width={903}
           height={688}
           alt="header-bg-color"
@@ -121,11 +119,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
               width={48}
               height={48}
               alt="moon"
-              src={
-                isDarkMode
-                  ? `${BASE_PATH}/${assets.sun_icon}`
-                  : `${BASE_PATH}/${assets.moon_icon}`
-              }
+              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
               className="w-6"
             />
           </button>
@@ -140,11 +134,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
               width={20}
               height={20}
               alt="arrow"
-              src={
-                isDarkMode
-                  ? `${BASE_PATH}/${assets.arrow_icon_dark}`
-                  : `${BASE_PATH}/${assets.arrow_icon}`
-              }
+              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
               className="w-3"
             />
           </Link>
@@ -154,11 +144,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
               width={48}
               height={48}
               alt="menu"
-              src={
-                isDarkMode
-                  ? `${BASE_PATH}/${assets.menu_white}`
-                  : `${BASE_PATH}/${assets.menu_black}`
-              }
+              src={isDarkMode ? assets.menu_white : assets.menu_black}
               className="w-6"
             />
           </button>
@@ -174,11 +160,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
               width={29}
               height={29}
               alt="close-icon"
-              src={
-                isDarkMode
-                  ? `${BASE_PATH}/${assets.close_white}`
-                  : `${BASE_PATH}/${assets.close_black}`
-              }
+              src={isDarkMode ? assets.close_white : assets.close_black}
               className="w-5 cursor-pointer"
             ></Image>
           </div>
