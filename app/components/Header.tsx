@@ -31,8 +31,7 @@ const Header = () => {
         Hi! I&apos;m Tomoyuki Kishi
         <Image
           className="rounded-full w-6"
-          // src={assets.hand_icon}
-          src="./vercel.svg"
+          src={assets.hand_icon}
           width={0}
           height={0}
           alt="hand-icon2"

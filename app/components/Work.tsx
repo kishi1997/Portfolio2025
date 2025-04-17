@@ -48,7 +48,7 @@ const Work = () => {
         {workData.map((work, index) => (
           <motion.div
             key={index}
-            style={{ backgroundImage: `${BASE_PATH}/${work.bgImage}` }}
+            style={{ backgroundImage: `url(${BASE_PATH}/${work.bgImage})` }}
             className="
             aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
             p-6 rounded-xl cursor-pointer"
