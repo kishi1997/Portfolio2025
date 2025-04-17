@@ -4,7 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-
+import nextConfig from "../../next.config";
+const BASE_PATH = nextConfig.basePath || "";
 const Work = () => {
   return (
     <motion.div
@@ -47,7 +48,7 @@ const Work = () => {
         {workData.map((work, index) => (
           <motion.div
             key={index}
-            style={{ backgroundImage: `url(${work.bgImage})` }}
+            style={{ backgroundImage: `${BASE_PATH}/${work.bgImage}` }}
             className="
             aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
             p-6 rounded-xl cursor-pointer"
