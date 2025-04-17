@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import nextConfig from "../../next.config";
 const BASE_PATH = nextConfig.basePath || "";
+
 const Work = () => {
   return (
     <motion.div
@@ -50,10 +51,11 @@ const Work = () => {
             key={index}
             style={{ backgroundImage: `url(${BASE_PATH}/${work.bgImage})` }}
             className="
-            aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
-            p-6 rounded-xl cursor-pointer"
+          aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
+          p-6 rounded-xl cursor-pointer"
             transition={{ duration: 0.3 }}
           >
+            console.log(bgImage); console.log(assets.profile_img);
             <div
               className="bg-white w-10/12 rounded-md absolute bottom-5
              left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7"
