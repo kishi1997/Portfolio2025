@@ -62,7 +62,9 @@ const Work = () => {
             >
               <div>
                 <h2 className="font-semibold">{work.title}</h2>
-                <p className="text-sm text-gray-700">{work.description}</p>
+                <p className="text-sm text-gray-700 leading-5">
+                  {work.description}
+                </p>
               </div>
               <div
                 className="aspect-square border rounded-full border-black w-9 flex 
