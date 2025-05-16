@@ -76,7 +76,7 @@ const Header = () => {
           </motion.div>
         </Link>
         {/* resumeダウンロードボタン */}
-        <Link href="/sample-resume.pdf" download>
+        <Link href="/resume.pdf" download>
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
