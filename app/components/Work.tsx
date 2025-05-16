@@ -50,18 +50,18 @@ const Work = () => {
         {workData.map((work, index) => (
           <motion.div
             key={index}
-            style={{ backgroundImage: `url(${BASE_PATH}/${work.bgImage})` }}
+            style={{ backgroundImage: `url(${BASE_PATH}${work.bgImage})` }}
             className="
           aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
-          p-6 rounded-xl cursor-pointer"
+          p-6 rounded-xl cursor-pointer before:content-[''] before:absolute before:inset-0 before:rounded-xl before:bg-black/50 hover:before:bg-black/80"
             transition={{ duration: 0.3 }}
           >
             <div
-              className="bg-white w-10/12 rounded-md absolute bottom-5
-             left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7"
+              className="bg-white/80 w-10/12 rounded-md absolute bottom-5
+             left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 group-hover:bg-white"
             >
               <div>
-                <h2 className="font-semibold">{work.title}</h2>
+                <h2 className="font-semibold leading-5">{work.title}</h2>
                 <p className="text-sm text-gray-700 leading-5">
                   {work.description}
                 </p>
