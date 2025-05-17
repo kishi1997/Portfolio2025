@@ -7,12 +7,15 @@ import { CiLocationArrow1 } from "react-icons/ci";
 import { GrTechnology } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { PiProjectorScreen } from "react-icons/pi";
+import { use } from "react";
 
-type Props = {
-  params: { workId: string };
+type SectionProps = {
+  title: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+  delay?: number;
 };
-
-interface Project {
+type Project = {
   slug: string; // URLに使われる一意の識別子
   title: string;
   thumbnailUrl: string; // 一覧ページやOGPで使う画像
@@ -25,11 +28,12 @@ interface Project {
   projectUrl?: string; // ライブサイトURL
   startDate?: string; // 開始日 (例: "2023-01")
   endDate?: string; // 終了日 (例: "2023-03" or "現在")
-}
-
-export const getProjectBySlug = (slug: string): Project | undefined => {
+};
+// スラッグに合致するデータを取得
+const getProjectBySlug = (slug: string): Project | undefined => {
   return projectsData.find((project) => project.slug === slug);
 };
+// プロジェクトデータ
 const projectsData: Project[] = [
   {
     slug: "project-alpha",
@@ -73,30 +77,45 @@ const projectsData: Project[] = [
   },
   // 他のプロジェクト...
 ];
-
-const ProjectDetailPage = ({ params }: Props) => {
-  const { workId } = params;
+const Section = ({ title, icon, children }: SectionProps) => (
+  <section className="mb-14">
+    <motion.h2
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+      className="text-2xl font-normal flex items-center gap-2 mb-4 "
+    >
+      {icon} {title}
+    </motion.h2>
+    {children}
+  </section>
+);
+const ProjectDetailPage = ({
+  params,
+}: {
+  params: Promise<{ workId: string }>;
+}) => {
+  const { workId } = use(params);
   const project = getProjectBySlug(workId);
-  if (!project) {
+  if (project == null) {
     return (
       <div className="text-center text-white py-20">Project not found.</div>
     );
   }
-
   return (
     <div className="container mx-auto px-4 pt-[100px] pb-20">
-      {/* Back Button */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mb-5"
       >
-        <Link href="/portfolio" legacyBehavior>
-          <a className="inline-flex items-center transition-all duration-500 text-xs gap-2 hover:gap-1">
-            <span>←</span>
-            <span>Back to Portfolio</span>
-          </a>
+        <Link
+          href="/portfolio"
+          className="inline-flex items-center transition-all duration-500 text-xs gap-2 hover:gap-1"
+        >
+          <span>←</span>
+          <span>Back to Portfolio</span>
         </Link>
       </motion.div>
 
@@ -110,9 +129,8 @@ const ProjectDetailPage = ({ params }: Props) => {
         <Image
           src={project.mainImageUrl}
           alt={project.title}
-          layout="fill"
-          objectFit="cover"
-          className="brightness-[0.5]"
+          fill
+          className="object-cover brightness-[0.5]"
           priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
@@ -239,8 +257,8 @@ const ProjectDetailPage = ({ params }: Props) => {
                 <Image
                   src={src}
                   alt={`${project.title} gallery image ${idx + 1}`}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  className="object-cover "
                 />
               </motion.div>
             ))}
@@ -271,26 +289,5 @@ const ProjectDetailPage = ({ params }: Props) => {
     </div>
   );
 };
-
-type SectionProps = {
-  title: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
-  delay?: number;
-};
-
-const Section = ({ title, icon, children }: SectionProps) => (
-  <section className="mb-14">
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-      className="text-2xl font-normal flex items-center gap-2 mb-4 "
-    >
-      {icon} {title}
-    </motion.h2>
-    {children}
-  </section>
-);
 
 export default ProjectDetailPage;
