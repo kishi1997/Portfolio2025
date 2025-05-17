@@ -1,4 +1,3 @@
-"use client";
 import { motion } from "framer-motion";
 import { FaLightbulb, FaImages } from "react-icons/fa";
 import Image from "next/image";
@@ -8,6 +7,13 @@ import { GrTechnology } from "react-icons/gr";
 import { IoMdPerson } from "react-icons/io";
 import { PiProjectorScreen } from "react-icons/pi";
 import { use } from "react";
+
+// 既存のコードの前に追加
+export async function generateStaticParams() {
+  return projectsData.map((project) => ({
+    workId: project.slug,
+  }));
+}
 
 type SectionProps = {
   title: string;
