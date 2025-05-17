@@ -94,21 +94,25 @@ export const workData = [
     title: "Frontend project",
     description: "Web Development",
     bgImage: "/work-1.png",
+    slug: "project1",
   },
   {
     title: "Backend project",
     description: "Build API",
     bgImage: "/work-2.png",
+    slug: "project2",
   },
   {
     title: "Wordpress site",
     description: "Wordpress Theme",
     bgImage: "/work-3.png",
+    slug: "project-alpha",
   },
   {
     title: "Web designing",
     description: "Web Design by Figma",
     bgImage: "/work-4.png",
+    slug: "project4",
   },
 ];
 

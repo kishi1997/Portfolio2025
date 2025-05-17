@@ -77,34 +77,40 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
         </a>
         {/* PC-menu  */}
         <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
+          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 md:px-8 md:py-2 ${
             isScroll
               ? ""
               : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent"
           } `}
         >
           <li>
-            <Link className="font-Ovo color-foreground" href="#top">
+            <Link className="font-Ovo dark:text-white md:text-sm" href="#top">
               HOME
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#about">
+            <Link className="font-Ovo dark:text-white md:text-sm" href="#about">
               ABOUT ME
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#service">
+            <Link
+              className="font-Ovo dark:text-white md:text-sm"
+              href="#service"
+            >
               SERVICES
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#work">
+            <Link className="font-Ovo dark:text-white md:text-sm" href="#work">
               WORK
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#contact">
+            <Link
+              className="font-Ovo dark:text-white md:text-sm"
+              href="#contact"
+            >
               CONTACT ME
             </Link>
           </li>
@@ -126,7 +132,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
           {/* コンタクトボタン */}
           <Link
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full 
-            ml-4 font-Ovo transition duration-500 dark:border-white/50 hover:-translate-y-0.5"
+            ml-4 font-Ovo transition duration-500 dark:border-white/50 hover:-translate-y-0.5 dark:text-white md:text-sm md:px-8 md:py-2"
             href="#contact"
           >
             CONTACT
@@ -153,7 +159,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
         <ul
           ref={sideMenuRef}
           className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 
-          z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
+          z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkTheme"
         >
           <div className="absolute top-6 right-6" onClick={closeMenu}>
             <Image
@@ -166,7 +172,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
           </div>
           <li>
             <Link
-              className="font-Ovo color-foreground"
+              className="font-Ovo dark:text-white"
               href="#top"
               onClick={closeMenu}
             >
@@ -174,22 +180,38 @@ const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#about" onClick={closeMenu}>
+            <Link
+              className="font-Ovo dark:text-white"
+              href="#about"
+              onClick={closeMenu}
+            >
               ABOUT ME
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#service" onClick={closeMenu}>
+            <Link
+              className="font-Ovo dark:text-white"
+              href="#service"
+              onClick={closeMenu}
+            >
               SERVICES
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#work" onClick={closeMenu}>
+            <Link
+              className="font-Ovo dark:text-white"
+              href="#work"
+              onClick={closeMenu}
+            >
               WORK
             </Link>
           </li>
           <li>
-            <Link className="font-Ovo" href="#contact" onClick={closeMenu}>
+            <Link
+              className="font-Ovo dark:text-white"
+              href="#contact"
+              onClick={closeMenu}
+            >
               CONTACT ME
             </Link>
           </li>
