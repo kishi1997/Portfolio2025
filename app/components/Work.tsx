@@ -56,7 +56,8 @@ const Work = () => {
           p-6 rounded-xl cursor-pointer before:content-[''] before:absolute before:inset-0 before:rounded-xl before:bg-black/50 hover:before:bg-black/80"
             transition={{ duration: 0.3 }}
           >
-            <div
+            <Link
+              href={`${BASE_PATH}/work/${work.slug}`}
               className="bg-white/80 w-10/12 rounded-md absolute bottom-5
              left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 group-hover:bg-white"
             >
@@ -78,7 +79,7 @@ const Work = () => {
                   className="w-5"
                 />
               </div>
-            </div>
+            </Link>
           </motion.div>
         ))}
       </motion.div>

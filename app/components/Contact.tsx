@@ -91,7 +91,7 @@ const Contact = () => {
             name="name"
             placeholder="Enter your name"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/10 dark:border-white/90"
+            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
           />
           <motion.input
             initial={{ x: 50, opacity: 0 }}
