@@ -8,6 +8,10 @@ import nextConfig from "../../next.config";
 const BASE_PATH = nextConfig.basePath || "";
 
 const Work = () => {
+  console.log(
+    "🚀 ~ Work ~ `${BASE_PATH}/work/${work.slug}`:",
+    `${BASE_PATH}/work/}`
+  );
   return (
     <motion.div
       id="work"
