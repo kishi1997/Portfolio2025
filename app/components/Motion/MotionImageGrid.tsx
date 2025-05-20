@@ -1,12 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 export default function MotionImageGrid({
   images,
   altBase,
 }: {
-  images: string[];
+  images: StaticImageData[];
   altBase: string;
 }) {
   return (
