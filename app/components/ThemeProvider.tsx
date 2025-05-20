@@ -1,6 +1,6 @@
 // app/components/ThemeProvider.tsx（クライアントコンポーネント）
 "use client";
-import { unstable_ViewTransition as ViewTransition } from "react";
+// import { unstable_ViewTransition as ViewTransition } from "react";
 import { useState, useEffect, useLayoutEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -43,7 +43,9 @@ export default function ThemeProvider({
   return (
     <div className="dark:bg-darkTheme dark:text-white">
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <ViewTransition name="cross-fade">{children}</ViewTransition>
+      {/* <ViewTransition name="cross-fade"> */}
+      {children}
+      {/* </ViewTransition> */}
       <Footer isDarkMode={isDarkMode} />
     </div>
   );
