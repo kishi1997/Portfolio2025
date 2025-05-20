@@ -86,6 +86,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}
+      NEXT_PUBLIC_MY_GITHUB_URL: ${{ secrets.NEXT_PUBLIC_MY_GITHUB_URL }}
+      NEXT_PUBLIC_MY_LANCERS_URL: ${{ secrets.NEXT_PUBLIC_MY_LANCERS_URL }}
+
     needs: build
     steps:
       - name: Deploy to GitHub Pages
