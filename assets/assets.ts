@@ -41,6 +41,11 @@ import react from "./react.svg";
 import wordpress from "./wordpress.svg";
 import typescript from "./typescript.svg";
 import nextjs from "./nextjs.svg";
+import work1 from "./work-1.png";
+import work2 from "./work-2.png";
+import work3 from "./work-3.png";
+import work4 from "./work-4.png";
+import { StaticImageData } from "next/image";
 
 export const assets = {
   user_image,
@@ -86,31 +91,35 @@ export const assets = {
   nextjs,
   typescript,
   github,
+  work1,
+  work2,
+  work3,
+  work4,
 };
 
 export const workData = [
   {
     title: "Frontend project",
     description: "Web Development",
-    bgImage: "/work-1.png",
+    bgImage: assets.work1,
     slug: "project1",
   },
   {
     title: "Backend project",
     description: "Build API",
-    bgImage: "/work-2.png",
+    bgImage: assets.work2,
     slug: "project2",
   },
   {
     title: "Wordpress site",
     description: "Wordpress Theme",
-    bgImage: "/work-3.png",
+    bgImage: assets.work3,
     slug: "project-alpha",
   },
   {
     title: "Web designing",
     description: "Web Design by Figma",
-    bgImage: "/work-4.png",
+    bgImage: assets.work4,
     slug: "project4",
   },
 ];
@@ -182,27 +191,27 @@ export const stackData = [
   },
 ];
 export type Project = {
-  slug: string; // URLに使われる一意の識別子
+  slug: string;
   title: string;
-  thumbnailUrl: string; // 一覧ページやOGPで使う画像
-  mainImageUrl: string; // 詳細ページでメインに表示する画像
-  imageGallery?: string[]; // その他の画像ギャラリー
-  description: string; // 短い説明
-  longDescription: string; // 詳細な説明 (HTMLも可)
+  thumbnailUrl: StaticImageData;
+  mainImageUrl: StaticImageData;
+  imageGallery?: StaticImageData[];
+  description: string;
+  longDescription: string;
   technologies: string[];
-  learnings?: string; // 学び
-  projectUrl?: string; // ライブサイトURL
-  startDate?: string; // 開始日 (例: "2023-01")
-  endDate?: string; // 終了日 (例: "2023-03" or "現在")
+  learnings?: string;
+  projectUrl?: string;
+  startDate?: string;
+  endDate?: string;
 };
 // プロジェクトデータ
 export const projectsData: Project[] = [
   {
     slug: "project-alpha",
     title: "プロジェクトAlpha",
-    thumbnailUrl: "/work-2.png",
-    mainImageUrl: "/work-2.png",
-    imageGallery: ["/work-2.png", "/work-2.png"],
+    thumbnailUrl: assets.work2,
+    mainImageUrl: assets.work2,
+    imageGallery: [assets.work2, assets.work2],
     description: "革新的なUI/UXを実現した次世代型Eコマースプラットフォーム。",
     longDescription: `
           <p>プロジェクトAlphaは、ユーザー中心設計に基づき、最高のショッピング体験を提供することを目的として開発されました。</p>
@@ -225,8 +234,8 @@ export const projectsData: Project[] = [
   {
     slug: "project-beta",
     title: "プロジェクトBeta",
-    thumbnailUrl: "/images/projects/beta/thumbnail.jpg",
-    mainImageUrl: "/images/projects/beta/main.jpg",
+    thumbnailUrl: assets.work1,
+    mainImageUrl: assets.work1,
     description: "中小企業向けの業務効率化SaaSアプリケーション。",
     longDescription: `
           <p>プロジェクトBetaは、日常業務の自動化と効率化を目指す企業向けに開発されたSaaSです。</p>

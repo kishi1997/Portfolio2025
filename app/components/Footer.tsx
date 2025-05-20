@@ -9,6 +9,10 @@ type FooterProps = {
 };
 
 const Footer = ({ isDarkMode }: FooterProps) => {
+  console.log(
+    "🚀 ~ Footer ~ process.env.NEXT_PUBLIC_MY_LANCERS_URL:",
+    process.env.NEXT_PUBLIC_MY_LANCERS_URL
+  );
   return (
     <div className="mt-20">
       <div className="text-center">
