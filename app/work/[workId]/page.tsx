@@ -36,7 +36,7 @@ export default async function ProjectDetailPage({
     <div className="container mx-auto px-4 pt-[100px] pb-20">
       <MotionText as="div" className="mb-5">
         <Link
-          href="/portfolio"
+          href="/"
           className="inline-flex items-center transition-all duration-500 text-xs gap-2 hover:gap-1"
         >
           ← <span>Back to Portfolio</span>
