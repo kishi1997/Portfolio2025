@@ -101,7 +101,7 @@ export const workData = [
   {
     title: "Frontend project",
     description: "Web Development",
-    bgImage: "/work-1.png",
+    bgImage: assets.work1,
     slug: "project1",
   },
   {
@@ -113,13 +113,13 @@ export const workData = [
   {
     title: "Wordpress site",
     description: "Wordpress Theme",
-    bgImage: "/work-3.png",
+    bgImage: assets.work3,
     slug: "project-alpha",
   },
   {
     title: "Web designing",
     description: "Web Design by Figma",
-    bgImage: "/work-4.png",
+    bgImage: assets.work4,
     slug: "project4",
   },
 ];
