@@ -1,135 +1,51 @@
-import { motion } from "framer-motion";
-import { FaLightbulb, FaImages } from "react-icons/fa";
-import Image from "next/image";
+// app/portfolio/[workId]/page.tsx
+import { notFound } from "next/navigation";
+import { Project, projectsData } from "@/assets/assets";
 import Link from "next/link";
-import { CiLocationArrow1 } from "react-icons/ci";
-import { GrTechnology } from "react-icons/gr";
+import Image from "next/image";
+import { FaLightbulb, FaImages } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
+import { GrTechnology } from "react-icons/gr";
 import { PiProjectorScreen } from "react-icons/pi";
-import { use } from "react";
+import MotionImageGrid from "@/app/components/Motion/MotionImageGrid";
+import MotionLinkButton from "@/app/components/Motion/MotionLinkButton";
+import MotionSection from "@/app/components/Motion/MotionSection";
+import MotionTagList from "@/app/components/Motion/MotionTagList";
+import MotionText from "@/app/components/Motion/MotionText";
 
-// 既存のコードの前に追加
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   return projectsData.map((project) => ({
     workId: project.slug,
   }));
-}
+};
 
-type SectionProps = {
-  title: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
-  delay?: number;
-};
-type Project = {
-  slug: string; // URLに使われる一意の識別子
-  title: string;
-  thumbnailUrl: string; // 一覧ページやOGPで使う画像
-  mainImageUrl: string; // 詳細ページでメインに表示する画像
-  imageGallery?: string[]; // その他の画像ギャラリー
-  description: string; // 短い説明
-  longDescription: string; // 詳細な説明 (HTMLも可)
-  technologies: string[];
-  learnings?: string; // 学び
-  projectUrl?: string; // ライブサイトURL
-  startDate?: string; // 開始日 (例: "2023-01")
-  endDate?: string; // 終了日 (例: "2023-03" or "現在")
-};
-// スラッグに合致するデータを取得
 const getProjectBySlug = (slug: string): Project | undefined => {
   return projectsData.find((project) => project.slug === slug);
 };
-// プロジェクトデータ
-const projectsData: Project[] = [
-  {
-    slug: "project-alpha",
-    title: "プロジェクトAlpha",
-    thumbnailUrl: "/work-2.png",
-    mainImageUrl: "/work-2.png",
-    imageGallery: ["/work-2.png", "/work-2.png"],
-    description: "革新的なUI/UXを実現した次世代型Eコマースプラットフォーム。",
-    longDescription: `
-          <p>プロジェクトAlphaは、ユーザー中心設計に基づき、最高のショッピング体験を提供することを目的として開発されました。</p>
-          <p>最新のフロントエンド技術を駆使し、高速かつインタラクティブなインターフェースを実現しています。</p>
-        `,
-    technologies: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Stripe API",
-      "Firebase",
-    ],
-    learnings:
-      "パフォーマンス最適化の重要性と、チーム内での効果的なコミュニケーション戦略について深く学びました。",
-    projectUrl: "https://example.com/project-alpha",
-    startDate: "2023-01",
-    endDate: "2023-06",
-  },
-  {
-    slug: "project-beta",
-    title: "プロジェクトBeta",
-    thumbnailUrl: "/images/projects/beta/thumbnail.jpg",
-    mainImageUrl: "/images/projects/beta/main.jpg",
-    description: "中小企業向けの業務効率化SaaSアプリケーション。",
-    longDescription: `
-          <p>プロジェクトBetaは、日常業務の自動化と効率化を目指す企業向けに開発されたSaaSです。</p>
-          <p>直感的な操作性と高いカスタマイズ性を両立させています。</p>
-        `,
-    technologies: ["Vue.js", "Nuxt.js", "TypeScript", "Node.js", "PostgreSQL"],
-    projectUrl: "https://example.com/project-beta",
-    startDate: "2022-05",
-    endDate: "2022-12",
-  },
-  // 他のプロジェクト...
-];
-const Section = ({ title, icon, children }: SectionProps) => (
-  <section className="mb-14">
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-      className="text-2xl font-normal flex items-center gap-2 mb-4 "
-    >
-      {icon} {title}
-    </motion.h2>
-    {children}
-  </section>
-);
-const ProjectDetailPage = ({
+
+export default async function ProjectDetailPage({
   params,
 }: {
   params: Promise<{ workId: string }>;
-}) => {
-  const { workId } = use(params);
+}) {
+  const { workId } = await params;
   const project = getProjectBySlug(workId);
-  if (project == null) {
-    return (
-      <div className="text-center text-white py-20">Project not found.</div>
-    );
-  }
+  if (!project) notFound();
+
   return (
     <div className="container mx-auto px-4 pt-[100px] pb-20">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-5"
-      >
+      <MotionText as="div" className="mb-5">
         <Link
           href="/portfolio"
           className="inline-flex items-center transition-all duration-500 text-xs gap-2 hover:gap-1"
         >
-          <span>←</span>
-          <span>Back to Portfolio</span>
+          ← <span>Back to Portfolio</span>
         </Link>
-      </motion.div>
+      </MotionText>
 
       {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+      <MotionText
+        as="div"
         className="relative h-[60vh] rounded-xl overflow-hidden shadow-2xl mb-12"
       >
         <Image
@@ -140,160 +56,75 @@ const ProjectDetailPage = ({
           priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold drop-shadow-lg"
-          >
+          <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
             {project.title}
-          </motion.h1>
+          </h1>
           {(project.startDate || project.endDate) && (
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-gray-300 mt-3 text-sm flex gap-2 items-center"
-            >
-              <span>📅 </span>
-              <span>
-                {project.startDate || "?"} ~ {project.endDate || "?"}
-              </span>
-            </motion.p>
+            <p className="text-gray-300 mt-3 text-sm flex gap-2 items-center">
+              📅 {project.startDate || "?"} ~ {project.endDate || "?"}
+            </p>
           )}
         </div>
-      </motion.div>
+      </MotionText>
 
       {/* Description */}
-      <Section
+      <MotionSection
         title="Project Details"
-        icon={
-          <PiProjectorScreen
-            className="text-black dark:text-white font-Outfit"
-            size={20}
-          />
-        }
+        icon={<PiProjectorScreen size={20} />}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        <MotionText
+          as="div"
           className="prose dark:prose-invert max-w-none leading-relaxed font-Ovo text-xs"
           dangerouslySetInnerHTML={{ __html: project.longDescription }}
         />
-      </Section>
+      </MotionSection>
 
-      {/* Technologies */}
-      <Section
+      {/* Technology */}
+      <MotionSection
         title="Technology Stacks"
-        icon={<GrTechnology className="text-black dark:text-white" size={20} />}
+        icon={<GrTechnology size={20} />}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          className="flex flex-wrap gap-3"
-        >
-          {project.technologies.map((tech) => (
-            <motion.span
-              key={tech}
-              className="bg-rose-50 text-gray-900 px-4 py-1 rounded-full text-xs font-medium"
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </motion.div>
-      </Section>
+        <MotionTagList items={project.technologies} />
+      </MotionSection>
 
       {/* Roles */}
-      <Section
+      <MotionSection
         title="Roles and Responsibilities"
-        icon={<IoMdPerson className="text-black dark:text-white" size={20} />}
+        icon={<IoMdPerson size={20} />}
       >
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          className="text-white opacity-80 font-Ovo text-xs"
-        >
+        <MotionText className="text-white opacity-80 font-Ovo text-xs">
           ※ ここに具体的な業務内容を記述してください。
-        </motion.p>
-      </Section>
+        </MotionText>
+      </MotionSection>
 
       {/* Learnings */}
       {project.learnings && (
-        <Section
+        <MotionSection
           title="Learnings and Innovations"
-          icon={
-            <FaLightbulb className="text-black dark:text-white" size={20} />
-          }
+          icon={<FaLightbulb size={20} />}
         >
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-            className="whitespace-pre-line leading-loose font-Ovo text-xs"
-          >
+          <MotionText className="whitespace-pre-line leading-loose font-Ovo text-xs">
             {project.learnings}
-          </motion.p>
-        </Section>
+          </MotionText>
+        </MotionSection>
       )}
 
       {/* Gallery */}
       {project.imageGallery && project.imageGallery?.length > 0 && (
-        <Section
-          title="Gyallery"
-          icon={<FaImages className="text-black dark:text-white" size={20} />}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-          >
-            {project.imageGallery.map((src, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                whileHover={{ scale: 1.02 }}
-                className="relative aspect-video rounded-lg overflow-hidden shadow-lg"
-              >
-                <Image
-                  src={src}
-                  alt={`${project.title} gallery image ${idx + 1}`}
-                  fill
-                  className="object-cover "
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </Section>
+        <MotionSection title="Gallery" icon={<FaImages size={20} />}>
+          <MotionImageGrid
+            images={project.imageGallery}
+            altBase={project.title}
+          />
+        </MotionSection>
       )}
 
       {/* Link Button */}
       {project.projectUrl && (
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-        >
-          <Link
-            className="max-w-fit mt-16 hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full
-              ml-4 font-Outfit transition duration-500 dark:border-white/50 hover:-translate-y-0.5 dark:text-white"
-            href="#contact"
-          >
-            View Site
-            <CiLocationArrow1
-              size={20}
-              className="text-black dark:text-white"
-            />
-          </Link>
-        </motion.div>
+        <MotionLinkButton href={project.projectUrl}>
+          view project
+        </MotionLinkButton>
       )}
     </div>
   );
-};
-
-export default ProjectDetailPage;
+}

@@ -83,7 +83,6 @@ export const assets = {
   css,
   html,
   react,
-  wordpress,
   nextjs,
   typescript,
   github,
@@ -181,4 +180,62 @@ export const stackData = [
     icon: assets.figma,
     title: "Figma",
   },
+];
+export type Project = {
+  slug: string; // URLに使われる一意の識別子
+  title: string;
+  thumbnailUrl: string; // 一覧ページやOGPで使う画像
+  mainImageUrl: string; // 詳細ページでメインに表示する画像
+  imageGallery?: string[]; // その他の画像ギャラリー
+  description: string; // 短い説明
+  longDescription: string; // 詳細な説明 (HTMLも可)
+  technologies: string[];
+  learnings?: string; // 学び
+  projectUrl?: string; // ライブサイトURL
+  startDate?: string; // 開始日 (例: "2023-01")
+  endDate?: string; // 終了日 (例: "2023-03" or "現在")
+};
+// プロジェクトデータ
+export const projectsData: Project[] = [
+  {
+    slug: "project-alpha",
+    title: "プロジェクトAlpha",
+    thumbnailUrl: "/work-2.png",
+    mainImageUrl: "/work-2.png",
+    imageGallery: ["/work-2.png", "/work-2.png"],
+    description: "革新的なUI/UXを実現した次世代型Eコマースプラットフォーム。",
+    longDescription: `
+          <p>プロジェクトAlphaは、ユーザー中心設計に基づき、最高のショッピング体験を提供することを目的として開発されました。</p>
+          <p>最新のフロントエンド技術を駆使し、高速かつインタラクティブなインターフェースを実現しています。</p>
+        `,
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Stripe API",
+      "Firebase",
+    ],
+    learnings:
+      "パフォーマンス最適化の重要性と、チーム内での効果的なコミュニケーション戦略について深く学びました。",
+    projectUrl: "https://example.com/project-alpha",
+    startDate: "2023-01",
+    endDate: "2023-06",
+  },
+  {
+    slug: "project-beta",
+    title: "プロジェクトBeta",
+    thumbnailUrl: "/images/projects/beta/thumbnail.jpg",
+    mainImageUrl: "/images/projects/beta/main.jpg",
+    description: "中小企業向けの業務効率化SaaSアプリケーション。",
+    longDescription: `
+          <p>プロジェクトBetaは、日常業務の自動化と効率化を目指す企業向けに開発されたSaaSです。</p>
+          <p>直感的な操作性と高いカスタマイズ性を両立させています。</p>
+        `,
+    technologies: ["Vue.js", "Nuxt.js", "TypeScript", "Node.js", "PostgreSQL"],
+    projectUrl: "https://example.com/project-beta",
+    startDate: "2022-05",
+    endDate: "2022-12",
+  },
+  // 他のプロジェクト...
 ];
