@@ -11,7 +11,7 @@ export default function MotionImageGrid({
 }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {images.map((src, idx) => (
+      {images.map((image, idx) => (
         <motion.div
           key={idx}
           initial={{ opacity: 0, y: 30 }}
@@ -21,7 +21,7 @@ export default function MotionImageGrid({
           className="relative aspect-video rounded-lg overflow-hidden shadow-lg"
         >
           <Image
-            src={src}
+            src={image.src}
             alt={`${altBase} gallery image ${idx + 1}`}
             fill
             className="object-cover"
