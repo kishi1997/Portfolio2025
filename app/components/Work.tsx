@@ -40,7 +40,7 @@ const Work = () => {
       </motion.p>
 
       <motion.div
-        className="grid grid-cols-(--autofit-cols-200) gap-6 my-10 dark:text-black"
+        className="grid grid-cols-(--autofit-cols-400) gap-6 my-10 dark:text-black"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
@@ -50,17 +50,19 @@ const Work = () => {
             key={index}
             style={{ backgroundImage: `url(${work.bgImage.src || ""})` }}
             className="
-          aspect-square bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
-          p-6 rounded-xl cursor-pointer before:content-[''] before:absolute before:inset-0 before:rounded-xl before:bg-black/50 hover:before:bg-black/80"
+          aspect-[18/10] bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
+          p-6 rounded-xl cursor-pointer before:content-[''] before:absolute before:inset-0 before:rounded-xl before:bg-black/20 hover:before:bg-black/50"
             transition={{ duration: 0.3 }}
           >
             <Link
-              href={`work/${work.slug}`}
+              href={work.slug}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/80 w-10/12 rounded-md absolute bottom-5
              left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 group-hover:bg-white"
             >
               <div>
-                <h2 className="font-semibold leading-5">{work.title}</h2>
+                {/* <h2 className="font-semibold leading-5">{work.title}</h2> */}
                 <p className="text-sm text-gray-700 leading-5">
                   {work.description}
                 </p>
@@ -81,7 +83,7 @@ const Work = () => {
           </motion.div>
         ))}
       </motion.div>
-      <Link href="">
+      {/* <Link href="">
         <motion.div
           className="w-max mx-auto px-10 py-3 border border-white bg-black text-white rounded-full 
           flex items-center gap-2 duration-500 hover:-translate-y-1 dark:bg-transparent"
@@ -98,7 +100,7 @@ const Work = () => {
             alt="right-arrow-white"
           />
         </motion.div>
-      </Link>
+      </Link> */}
     </motion.div>
   );
 };

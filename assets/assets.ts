@@ -45,6 +45,11 @@ import work1 from "./work-1.png";
 import work2 from "./work-2.png";
 import work3 from "./work-3.png";
 import work4 from "./work-4.png";
+import work5 from "./work-5.png";
+import work6 from "./work-6.png";
+import work7 from "./work-7.png";
+import work8 from "./work-8.png";
+import work9 from "./work-9.png";
 import { StaticImageData } from "next/image";
 
 export const assets = {
@@ -95,32 +100,72 @@ export const assets = {
   work2,
   work3,
   work4,
+  work5,
+  work6,
+  work7,
+  work8,
+  work9,
 };
 
 export const workData = [
+  // nobu
   {
-    title: "Frontend project",
-    description: "Web Development",
+    title: "Wordpress",
+    description: "Wordpress Theme for Corporate website",
     bgImage: assets.work1,
-    slug: "project1",
+    slug: "https://nobu-implant.sakura.ne.jp/",
   },
+  // エステミ俺
   {
-    title: "Backend project",
-    description: "Build API",
+    title: "Wordpress",
+    description: "Wordpress Theme for Corporate website",
     bgImage: assets.work2,
-    slug: "project2",
+    slug: "https://www.miauler.jp/",
+  },
+  // eguti
+  {
+    title: "Wordpress site",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work3,
+    slug: "https://eg-paint.com/",
+  },
+  // arakawa
+  {
+    title: "Wordpress site",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work4,
+    slug: "https://uracdoma.sakura.ne.jp/",
+  },
+  // yoshimitu
+  {
+    title: "Wordpress site",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work5,
+    slug: "https://4432.co.jp/",
   },
   {
     title: "Wordpress site",
-    description: "Wordpress Theme",
-    bgImage: assets.work3,
-    slug: "project-alpha",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work6,
+    slug: "https://agata2011.com/",
+  },
+  {
+    title: "Wordpress site",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work7,
+    slug: "https://awaji-life.jp/",
+  },
+  {
+    title: "Wordpress site",
+    description: "Wordpress Theme for Corporate website",
+    bgImage: assets.work8,
+    slug: "https://procraft-nagoya.sakura.ne.jp/",
   },
   {
     title: "Web designing",
     description: "Web Design by Figma",
-    bgImage: assets.work4,
-    slug: "project4",
+    bgImage: assets.work9,
+    slug: "https://www.figma.com/design/J5K5MefZ1IcV8cP03cP6Cc/design-share?node-id=0-1&t=MI1QKN4AvdKEdalx-1",
   },
 ];
 
