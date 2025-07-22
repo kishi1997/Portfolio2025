@@ -1,7 +1,7 @@
 // app/components/ThemeProvider.tsx（クライアントコンポーネント）
 "use client";
-
-import { useState, useEffect } from "react";
+// import { unstable_ViewTransition as ViewTransition } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import React from "react";
@@ -22,10 +22,12 @@ export default function ThemeProvider({
 
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
+  // useEffectをuseLayoutEffectに変更
+  useLayoutEffect(() => {
     setMounted(true);
   }, []);
 
+  // テーマの変更に関するuseEffectはそのまま維持
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -41,7 +43,9 @@ export default function ThemeProvider({
   return (
     <div className="dark:bg-darkTheme dark:text-white">
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      {/* <ViewTransition name="cross-fade"> */}
       {children}
+      {/* </ViewTransition> */}
       <Footer isDarkMode={isDarkMode} />
     </div>
   );
