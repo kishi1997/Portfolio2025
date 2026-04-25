@@ -1,4 +1,3 @@
-// app/components/ThemeProvider.tsx（クライアントコンポーネント）
 "use client";
 // import { unstable_ViewTransition as ViewTransition } from "react";
 import { useState, useEffect, useLayoutEffect } from "react";
@@ -17,7 +16,7 @@ export default function ThemeProvider({
       if (localStorage.theme === "light") return false;
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
-    return false;
+    return true;
   });
 
   const [mounted, setMounted] = useState(false);
@@ -41,7 +40,8 @@ export default function ThemeProvider({
   if (!mounted) return null;
 
   return (
-    <div className="dark:bg-darkTheme dark:text-white">
+    <div style={{ background: "var(--bg)", color: "var(--text)", minHeight: "100vh" }}>
+      <div className="grain" aria-hidden="true" />
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       {/* <ViewTransition name="cross-fade"> */}
       {children}

@@ -9,214 +9,176 @@ import React, {
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Link from "next/link";
+import { HiMoon, HiSun, HiBars3, HiXMark, HiArrowRight } from "react-icons/hi2";
 
 type NavbarProps = {
   isDarkMode: boolean;
   setIsDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
+const NAV_LINKS = [
+  { label: "Home", href: "#top" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#service" },
+  { label: "Work", href: "#work" },
+  { label: "Contact", href: "#contact" },
+];
+
 const Navbar = ({ isDarkMode, setIsDarkMode }: NavbarProps) => {
-  const [isScroll, setIsScroll] = useState<boolean>(false);
-  // モバイルメニューREF
-  const sideMenuRef = useRef<HTMLUListElement>(null);
+  const [isScroll, setIsScroll] = useState(false);
+  const sideMenuRef = useRef<HTMLDivElement>(null);
 
   const openMenu = () => {
-    if (sideMenuRef.current == null) return;
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
+    if (!sideMenuRef.current) return;
+    sideMenuRef.current.style.transform = "translateX(0)";
   };
 
   const closeMenu = () => {
-    if (sideMenuRef.current == null) return;
-    sideMenuRef.current.style.transform = "translateX(16rem)";
+    if (!sideMenuRef.current) return;
+    sideMenuRef.current.style.transform = "translateX(100%)";
   };
 
-  //  スクロールしたらヘッダーに背景をつける
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollY > 50) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    };
+    const handleScroll = () => setIsScroll(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
-        <Image
-          className="w-full"
-          src={assets.header_bg_color}
-          width={903}
-          height={688}
-          alt="header-bg-color"
-        ></Image>
-      </div>
       <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50
-            ${
-              isScroll
-                ? "bg-white/50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-violet-50/20"
-                : ""
-            } `}
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 transition-all duration-300"
+        style={{
+          backgroundColor: isScroll ? "var(--bg-surface)" : "transparent",
+          backdropFilter: isScroll ? "blur(16px)" : "none",
+          borderBottom: isScroll ? "1px solid var(--border)" : "1px solid transparent",
+        }}
       >
-        {/* logo  */}
-        <a href="#top">
+        {/* Logo */}
+        <a href="#top" className="flex-shrink-0 z-10">
           <Image
-            width={109}
-            height={29}
-            alt="logo"
             src={isDarkMode ? assets.logo_dark : assets.logo}
-            className="w-40 cursor-pointer mr-14"
+            alt="logo"
+            width={130}
+            height={34}
+            className="h-7 w-auto"
           />
         </a>
-        {/* PC-menu  */}
-        <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 md:px-8 md:py-2 ${
-            isScroll
-              ? ""
-              : "bg-white/50 shadow-sm dark:border dark:border-white/50 dark:bg-transparent"
-          } `}
-        >
-          <li>
-            <Link className="font-Ovo dark:text-white md:text-sm" href="#top">
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo dark:text-white md:text-sm" href="#about">
-              ABOUT ME
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white md:text-sm"
-              href="#service"
-            >
-              SERVICES
-            </Link>
-          </li>
-          <li>
-            <Link className="font-Ovo dark:text-white md:text-sm" href="#work">
-              WORK
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white md:text-sm"
-              href="#contact"
-            >
-              CONTACT ME
-            </Link>
-          </li>
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <li key={link.label}>
+              <Link href={link.href} className="nav-link">
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <div className="flex items-center gap-4">
-          {/* dark-mode切り替えボタン */}
+
+        {/* Right actions */}
+        <div className="flex items-center gap-2">
+          {/* Theme toggle */}
           <button
-            className="cursor-pointer"
-            onClick={() => setIsDarkMode((prev: boolean) => !prev)}
+            onClick={() => setIsDarkMode((p) => !p)}
+            className="p-2.5 rounded-full transition-all duration-200"
+            style={{
+              color: "var(--text-muted)",
+              border: "1px solid var(--border)",
+              backgroundColor: "var(--bg-surface)",
+            }}
+            aria-label="Toggle theme"
           >
-            <Image
-              width={48}
-              height={48}
-              alt="moon"
-              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
-              className="w-6"
-            />
+            {isDarkMode ? (
+              <HiSun className="w-4 h-4" />
+            ) : (
+              <HiMoon className="w-4 h-4" />
+            )}
           </button>
-          {/* コンタクトボタン */}
+
+          {/* CTA button */}
           <Link
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full 
-            ml-4 font-Ovo transition duration-500 dark:border-white/50 hover:-translate-y-0.5 dark:text-white md:text-sm md:px-8 md:py-2"
             href="#contact"
+            className="hidden lg:flex items-center gap-1.5 px-5 py-2 rounded-full text-[0.65rem] font-Mono tracking-widest uppercase transition-all duration-200"
+            style={{
+              border: "1px solid var(--accent)",
+              color: "var(--accent)",
+              backgroundColor: "var(--accent-muted)",
+            }}
           >
-            CONTACT
-            <Image
-              width={20}
-              height={20}
-              alt="arrow"
-              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
-              className="w-3"
-            />
+            Hire me
+            <HiArrowRight className="w-3 h-3" />
           </Link>
-          {/* sp-menuボタン */}
-          <button className="block md:hidden ml-3" onClick={openMenu}>
-            <Image
-              width={48}
-              height={48}
-              alt="menu"
-              src={isDarkMode ? assets.menu_white : assets.menu_black}
-              className="w-6"
-            />
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2.5 rounded-full"
+            style={{
+              color: "var(--text-muted)",
+              border: "1px solid var(--border)",
+              backgroundColor: "var(--bg-surface)",
+            }}
+            onClick={openMenu}
+            aria-label="Open menu"
+          >
+            <HiBars3 className="w-5 h-5" />
           </button>
         </div>
-        {/* mobile-menu  */}
-        <ul
-          ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 
-          z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkTheme"
-        >
-          <div className="absolute top-6 right-6" onClick={closeMenu}>
-            <Image
-              width={29}
-              height={29}
-              alt="close-icon"
-              src={isDarkMode ? assets.close_white : assets.close_black}
-              className="w-5 cursor-pointer"
-            ></Image>
-          </div>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white"
-              href="#top"
-              onClick={closeMenu}
-            >
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white"
-              href="#about"
-              onClick={closeMenu}
-            >
-              ABOUT ME
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white"
-              href="#service"
-              onClick={closeMenu}
-            >
-              SERVICES
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white"
-              href="#work"
-              onClick={closeMenu}
-            >
-              WORK
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="font-Ovo dark:text-white"
-              href="#contact"
-              onClick={closeMenu}
-            >
-              CONTACT ME
-            </Link>
-          </li>
-        </ul>
       </nav>
+
+      {/* Mobile side menu */}
+      <div
+        ref={sideMenuRef}
+        className="fixed top-0 right-0 bottom-0 w-72 z-[100] flex flex-col py-20 px-8 transition-transform duration-300"
+        style={{
+          transform: "translateX(100%)",
+          backgroundColor: "var(--bg-surface)",
+          borderLeft: "1px solid var(--border)",
+        }}
+      >
+        <button
+          onClick={closeMenu}
+          className="absolute top-6 right-6 p-2 rounded-full transition-colors"
+          style={{
+            color: "var(--text-muted)",
+            border: "1px solid var(--border)",
+          }}
+          aria-label="Close menu"
+        >
+          <HiXMark className="w-5 h-5" />
+        </button>
+
+        {/* Mobile links */}
+        <ul className="flex flex-col gap-8 mt-4">
+          {NAV_LINKS.map((link) => (
+            <li key={link.label}>
+              <Link
+                href={link.href}
+                onClick={closeMenu}
+                className="text-sm font-Mono tracking-widest uppercase transition-colors"
+                style={{ color: "var(--text-muted)" }}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-auto">
+          <Link
+            href="#contact"
+            onClick={closeMenu}
+            className="flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-Mono tracking-widest uppercase font-bold transition-all duration-200 hover:scale-105"
+            style={{
+              backgroundColor: "var(--accent)",
+              color: isDarkMode ? "#050508" : "#ffffff",
+            }}
+          >
+            Get in touch
+            <HiArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

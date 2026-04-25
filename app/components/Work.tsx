@@ -1,107 +1,195 @@
 "use client";
-import { assets, workData } from "@/assets/assets";
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { workData } from "@/assets/assets";
 import { motion } from "motion/react";
+import { HiArrowUpRight } from "react-icons/hi2";
+
+const WorkCard = ({
+  work,
+  index,
+}: {
+  work: (typeof workData)[0];
+  index: number;
+}) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const rotateX = (0.5 - y) * 10;
+    const rotateY = (x - 0.5) * 10;
+    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, delay: (index % 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Link
+        href={work.slug}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="work-card group relative aspect-[4/5] rounded-2xl overflow-hidden cursor-pointer"
+          style={{
+            border: "1px solid var(--border)",
+            transition: "transform 0.15s ease, border-color 0.25s",
+          }}
+        >
+          {/* Background image */}
+          <Image
+            src={work.bgImage}
+            alt={work.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+          />
+
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors duration-500" />
+
+          {/* Top-right external link pill */}
+          <div
+            className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-Mono tracking-widest uppercase opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+            style={{
+              backgroundColor: "var(--accent)",
+              color: "var(--bg)",
+            }}
+          >
+            Visit
+            <HiArrowUpRight className="w-3 h-3" />
+          </div>
+
+          {/* Bottom slide-up info */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out">
+            <div
+              className="p-4 rounded-xl backdrop-blur-sm"
+              style={{ backgroundColor: "rgba(5,5,14,0.85)" }}
+            >
+              <h3 className="font-Syne font-bold text-base text-white mb-1">
+                {work.title}
+              </h3>
+              <p className="text-xs font-Mono text-white/70 leading-relaxed">
+                {work.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+};
 
 const Work = () => {
   return (
-    <motion.div
+    <section
       id="work"
-      className="w-full px-[12%] py-10 scroll-mt-20"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      className="relative w-full px-6 lg:px-12 xl:px-20 py-24 scroll-mt-20 overflow-hidden"
     >
-      <motion.h4
-        className="text-center mb-2 text-lg font-Ovo"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+      {/* Section number */}
+      <span className="section-number" aria-hidden="true">03</span>
+
+      {/* ─── Geometric decorations ─── */}
+      {/* Large dashed circle — right background */}
+      <div
+        className="geo-float-c pointer-events-none absolute hidden lg:block"
+        style={{ right: "-80px", top: "15%" }}
+        aria-hidden="true"
       >
-        My Portfolio
-      </motion.h4>
+        <svg width="320" height="320" viewBox="0 0 320 320" fill="none">
+          <circle cx="160" cy="160" r="150" stroke="var(--accent)" strokeWidth="0.75" opacity="0.09" strokeDasharray="12 10"/>
+          <circle cx="160" cy="160" r="110" stroke="var(--accent-2)" strokeWidth="0.5" opacity="0.06"/>
+        </svg>
+      </div>
+      {/* Diamond cluster — upper left */}
+      <div
+        className="pointer-events-none absolute hidden sm:block"
+        style={{ left: "1%", top: "10%" }}
+        aria-hidden="true"
+      >
+        <svg width="90" height="82" viewBox="0 0 90 82" fill="none">
+          <polygon points="24,4 42,24 24,44 6,24" stroke="var(--accent)" strokeWidth="1.2" opacity="0.2"/>
+          <polygon points="60,10 74,26 60,42 46,26" stroke="var(--accent)" strokeWidth="1" opacity="0.15"/>
+          <polygon points="44,48 54,60 44,72 34,60" stroke="var(--accent-2)" strokeWidth="1" opacity="0.18"/>
+        </svg>
+      </div>
+      {/* Dot row — bottom center */}
+      <div
+        className="pointer-events-none absolute hidden md:block"
+        style={{ left: "50%", bottom: "4%", transform: "translateX(-50%)" }}
+        aria-hidden="true"
+      >
+        <svg width="220" height="20" viewBox="0 0 220 20" fill="none">
+          {Array.from({ length: 11 }, (_, i) => (
+            <circle key={i} cx={i * 22 + 1} cy="10" r="1.5" fill="var(--accent)" opacity="0.22"/>
+          ))}
+        </svg>
+      </div>
+
+      {/* Section label */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center gap-3 mb-4"
+      >
+        <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
+        <span
+          className="text-xs font-Mono tracking-[0.2em] uppercase"
+          style={{ color: "var(--accent)" }}
+        >
+          Selected work
+        </span>
+      </motion.div>
+
       <motion.h2
-        className="text-center text-5xl font-Ovo"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-4xl sm:text-5xl font-Syne font-extrabold mb-4"
+        style={{ color: "var(--text)" }}
       >
-        My latest work
+        Featured projects
       </motion.h2>
+
       <motion.p
-        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-xs font-Mono tracking-widest uppercase mb-16"
+        style={{ color: "var(--text-muted)" }}
       >
-        Welcome to my portfolio! I am a front-end web developer.
+        Hover to explore — click to visit
       </motion.p>
 
-      <motion.div
-        className="grid grid-cols-(--autofit-cols-400) gap-6 my-10 dark:text-black"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-      >
-        {workData.map((work, index) => (
-          <motion.div
-            key={index}
-            style={{ backgroundImage: `url(${work.bgImage.src || ""})` }}
-            className="
-          aspect-[18/10] bg-no-repeat relative bg-cover bg-center group border-[0.5px] border-gray-400 
-          p-6 rounded-xl cursor-pointer before:content-[''] before:absolute before:inset-0 before:rounded-xl before:bg-black/20 hover:before:bg-black/50"
-            transition={{ duration: 0.3 }}
-          >
-            <Link
-              href={work.slug}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/80 w-10/12 rounded-md absolute bottom-5
-             left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 group-hover:bg-white"
-            >
-              <div>
-                {/* <h2 className="font-semibold leading-5">{work.title}</h2> */}
-                <p className="text-sm text-gray-700 leading-5">
-                  {work.description}
-                </p>
-              </div>
-              <div
-                className="aspect-square border rounded-full border-black w-9 flex 
-                items-center justify-center shadow-[2px_2px_0_0] group-hover:bg-yellow-300 transition"
-              >
-                <Image
-                  src={assets.send_icon}
-                  width={0}
-                  height={0}
-                  alt="send-icon"
-                  className="w-5"
-                />
-              </div>
-            </Link>
-          </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {workData.map((work, i) => (
+          <WorkCard key={i} work={work} index={i} />
         ))}
-      </motion.div>
-      {/* <Link href="">
-        <motion.div
-          className="w-max mx-auto px-10 py-3 border border-white bg-black text-white rounded-full 
-          flex items-center gap-2 duration-500 hover:-translate-y-1 dark:bg-transparent"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
-        >
-          show more
-          <Image
-            className="w-4"
-            src={assets.right_arrow_white}
-            width={0}
-            height={0}
-            alt="right-arrow-white"
-          />
-        </motion.div>
-      </Link> */}
-    </motion.div>
+      </div>
+    </section>
   );
 };
 

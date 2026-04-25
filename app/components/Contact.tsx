@@ -1,18 +1,40 @@
 "use client";
-import { assets } from "@/assets/assets";
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
+import { HiEnvelope, HiMapPin, HiArrowRight } from "react-icons/hi2";
+import { SiGithub } from "react-icons/si";
+
+const CONTACT_INFO = [
+  {
+    Icon: HiEnvelope,
+    label: "Email",
+    value: "bgmwork9634@gmail.com",
+    href: "mailto:bgmwork9634@gmail.com",
+  },
+  {
+    Icon: SiGithub,
+    label: "GitHub",
+    value: "github.com/kishi1997",
+    href: process.env.NEXT_PUBLIC_MY_GITHUB_URL || "",
+  },
+  {
+    Icon: HiMapPin,
+    label: "Location",
+    value: "Vancouver, Canada",
+    href: null,
+  },
+];
 
 const Contact = () => {
   const [result, setResult] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setResult("Sending....");
+    setResult("Sending...");
+    setIsSuccess(false);
     const target = e.currentTarget;
     const formData = new FormData(target);
-
     formData.append(
       "access_key",
       process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ""
@@ -26,113 +48,200 @@ const Contact = () => {
     const data = await response.json();
 
     if (data.success) {
-      setResult("Form Submitted Successfully");
-      // Error: Cannot read properties of null (reading 'reset')エラー出るので追加
+      setResult("Message sent successfully!");
+      setIsSuccess(true);
       if (target == null) return;
       target.reset();
     } else {
       console.log("Error", data);
       setResult(data.message);
+      setIsSuccess(false);
     }
   };
+
   return (
-    <motion.div
+    <section
       id="contact"
-      className="w-full px-[12%] py-10 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat 
-      bg-center bg-[length:90%_auto] dark:bg-none"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      className="relative w-full px-6 lg:px-12 xl:px-20 py-24 scroll-mt-20 overflow-hidden"
     >
-      <motion.h4
-        className="text-center mb-2 text-lg font-Ovo"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+      {/* Section number */}
+      <span className="section-number" aria-hidden="true">04</span>
+
+      {/* Section label */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center gap-3 mb-4"
       >
-        Contact with me
-      </motion.h4>
+        <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
+        <span
+          className="text-xs font-Mono tracking-[0.2em] uppercase"
+          style={{ color: "var(--accent)" }}
+        >
+          Let&apos;s work together
+        </span>
+      </motion.div>
+
       <motion.h2
-        className="text-center text-5xl font-Ovo"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-4xl sm:text-5xl font-Syne font-extrabold mb-16"
+        style={{ color: "var(--text)" }}
       >
         Get in touch
       </motion.h2>
-      <motion.p
-        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-      >
-        I&apos;d love to hear from you! If you have any questions, comments, or
-        just want to say hello, feel free to reach out.
-      </motion.p>
-      <motion.form
-        onSubmit={onSubmit}
-        method="POST"
-        className="max-w-2xl mx-auto"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.9 }}
-      >
-        <input
-          type="hidden"
-          name="access_key"
-          value="${process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}"
-        />
-        <div className="grid grid-cols-(--autofit-cols-200) gap-6 mt-10 mb-8">
-          <motion.input
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
-          />
-          <motion.input
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
-          />
-        </div>
-        <motion.textarea
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          name="message"
-          rows={6}
-          placeholder="Enter your message"
-          required
-          className="w-full p-4 mb-6 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-transparent dark:border-white/90"
-        ></motion.textarea>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-          className="cursor-pointer py-3 px-8 flex items-center justify-between gap-2 bg-black/80 text-white 
-          mx-auto rounded-full duration-500 hover:bg-black dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover/10"
-          type="submit"
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        {/* Left: intro + contact info */}
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col gap-10"
         >
-          Submit now
-          <Image
-            className="w-4"
-            src={assets.right_arrow_white}
-            width={0}
-            height={0}
-            alt="right-arrow-white"
-          ></Image>
-        </motion.button>
-        <p className="mt-4 text-center">{result}</p>
-      </motion.form>
-    </motion.div>
+          <div>
+            <p
+              className="text-sm leading-relaxed max-w-md"
+              style={{ color: "var(--text-muted)" }}
+            >
+              I&apos;m open to freelance projects, full-time roles, and creative
+              collaborations. Whether you have a big idea or just want to say
+              hi — my inbox is always open.
+            </p>
+          </div>
+
+          {/* Contact cards */}
+          <div className="flex flex-col gap-4">
+            {CONTACT_INFO.map(({ Icon, label, value, href }) => {
+              const inner = (
+                <div
+                  className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200"
+                  style={{
+                    backgroundColor: "var(--bg-surface)",
+                    border: "1px solid var(--border)",
+                  }}
+                >
+                  <div className="icon-circle flex-shrink-0">
+                    <Icon className="w-5 h-5" style={{ color: "var(--accent)" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-[0.6rem] font-Mono tracking-[0.15em] uppercase mb-0.5"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {label}
+                    </div>
+                    <div
+                      className="text-sm font-Syne font-bold"
+                      style={{ color: "var(--text)" }}
+                    >
+                      {value}
+                    </div>
+                  </div>
+                </div>
+              );
+
+              return href ? (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className="block hover:scale-[1.02] transition-transform duration-200"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div key={label}>{inner}</div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Right: form */}
+        <motion.form
+          onSubmit={onSubmit}
+          method="POST"
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col gap-5"
+        >
+          {/* Name */}
+          <div className="flex flex-col gap-1.5">
+            <label
+              className="text-[0.6rem] font-Mono tracking-[0.15em] uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Your name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              required
+              className="neon-input"
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col gap-1.5">
+            <label
+              className="text-[0.6rem] font-Mono tracking-[0.15em] uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Email address
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="john@example.com"
+              required
+              className="neon-input"
+            />
+          </div>
+
+          {/* Message */}
+          <div className="flex flex-col gap-1.5">
+            <label
+              className="text-[0.6rem] font-Mono tracking-[0.15em] uppercase"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows={6}
+              placeholder="Tell me about your project..."
+              required
+              className="neon-input resize-none"
+            />
+          </div>
+
+          {/* Submit */}
+          <div className="flex items-center gap-4 mt-2">
+            <button type="submit" className="btn-accent">
+              Send message
+              <HiArrowRight className="w-3.5 h-3.5" />
+            </button>
+            {result && (
+              <p
+                className="text-xs font-Mono"
+                style={{ color: isSuccess ? "var(--accent)" : "var(--text-muted)" }}
+              >
+                {result}
+              </p>
+            )}
+          </div>
+        </motion.form>
+      </div>
+    </section>
   );
 };
 

@@ -1,63 +1,91 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { assets } from "@/assets/assets";
 import Link from "next/link";
+import { assets } from "@/assets/assets";
+import { HiEnvelope, HiArrowUpRight } from "react-icons/hi2";
 
 type FooterProps = {
   isDarkMode: boolean;
 };
 
 const Footer = ({ isDarkMode }: FooterProps) => {
-  console.log(
-    "🚀 ~ Footer ~ process.env.NEXT_PUBLIC_MY_LANCERS_URL:",
-    process.env.NEXT_PUBLIC_MY_LANCERS_URL
-  );
   return (
-    <div className="mt-20">
-      <div className="text-center">
-        <Image
-          src={isDarkMode ? assets.logo_dark : assets.logo}
-          className="w-36 mx-auto mb-2"
-          alt="logo"
-          width={0}
-          height={0}
-        />
-        <div className="w-max flex items-center gap-2 mx-auto">
+    <footer
+      className="w-full px-6 lg:px-12 xl:px-20 py-12"
+      style={{ borderTop: "1px solid var(--border)" }}
+    >
+      {/* Upper row */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
+        <div className="flex flex-col gap-2">
           <Image
-            src={assets.mail_icon}
-            className="w-6"
-            alt="mail-icon"
-            width={0}
-            height={0}
+            src={isDarkMode ? assets.logo_dark : assets.logo}
+            alt="logo"
+            width={130}
+            height={34}
+            className="h-7 w-auto"
           />
-          <Link href="mailto:bgmwork9634@gmail">bgmwork9634@gmail.com</Link>
+          <span
+            className="text-xs font-Mono tracking-[0.15em] uppercase"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Crafted in Vancouver
+          </span>
         </div>
+
+        <Link
+          href="mailto:bgmwork9634@gmail.com"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200 hover:scale-105"
+          style={{
+            border: "1px solid var(--border)",
+            backgroundColor: "var(--bg-surface)",
+            color: "var(--text-muted)",
+          }}
+        >
+          <HiEnvelope className="w-4 h-4" style={{ color: "var(--accent)" }} />
+          <span className="text-xs font-Mono tracking-widest">
+            bgmwork9634@gmail.com
+          </span>
+        </Link>
       </div>
-      <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6">
-        <p>@ 2025 Tomoyuki Kishi All rights reserved.</p>
-        <ul className="mt-4 sm:mt-0 flex justify-center items-center gap-4">
-          <li>
-            <Link
-              className="hover:underline"
-              target="_blank"
-              href={process.env.NEXT_PUBLIC_MY_GITHUB_URL || ""}
-            >
-              Github
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="hover:underline"
-              target="_blank"
-              href={process.env.NEXT_PUBLIC_MY_LANCERS_URL || ""}
-            >
-              Lancers
-            </Link>
-          </li>
+
+      {/* Lower row */}
+      <div
+        className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
+        style={{ borderTop: "1px solid var(--border)" }}
+      >
+        <p
+          className="text-xs font-Mono tracking-widest"
+          style={{ color: "var(--text-muted)" }}
+        >
+          © 2025 Tomoyuki Kishi. All rights reserved.
+        </p>
+
+        <ul className="flex items-center gap-3">
+          {[
+            { label: "GitHub", href: process.env.NEXT_PUBLIC_MY_GITHUB_URL || "" },
+            { label: "Lancers", href: process.env.NEXT_PUBLIC_MY_LANCERS_URL || "" },
+          ].map((link) => (
+            <li key={link.label}>
+              <Link
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-4 py-2 rounded-full text-xs font-Mono tracking-widest uppercase transition-all duration-200 hover:scale-105"
+                style={{
+                  border: "1px solid var(--border)",
+                  backgroundColor: "var(--bg-surface)",
+                  color: "var(--text-muted)",
+                }}
+              >
+                {link.label}
+                <HiArrowUpRight className="w-3 h-3" />
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 };
 
