@@ -44,4 +44,6 @@ tailwind.config.ts
 
 .playwright-mcp/
 
+.claude
+
 /*.png
